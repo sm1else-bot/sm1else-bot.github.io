@@ -20,8 +20,8 @@ There is no application backend. A small standard-library Python build (`python 
 
 GitHub Actions publishes these static files on pushes to `main`. Project implementations stay in their own repositories. No custom domain is configured yet. Once DNS is ready, configure `projects.jessenth.com` on this repository's Pages settings; leave individual project repositories' custom domains empty to inherit the account domain.
 
-The collection currently contains Mozhi only. Other projects will be added individually.
+The collection currently contains Mozhi and WebOS Snow. WebOS Snow links to its existing deployment at webos.jessenth.com and uses a screenshot supplied by the project author.
 
 ## Browser checks
 
-Install Playwright as a development tool (`npm install --no-save playwright`, then `npx playwright install chromium`) and run `node tests/browser.cjs` against a local server on port 8770. Set `SITE_URL` for another server, or `MOZHI_TEST_BROWSER` to use an existing Chrome executable. Checks cover the Mozhi-only catalog, links, browsing state, filters, a real interpreter preview, cleanup, and responsive layouts.
+Install Playwright as a development tool (`npm install --no-save playwright`, then `npx playwright install chromium`) and run `node tests/browser.cjs` against a local server on port 8770. Set `SITE_URL` for another server, or `MOZHI_TEST_BROWSER` to use an existing Chrome executable. Checks cover the project catalog, links, browsing state, filters, a real interpreter preview, cleanup, and responsive layouts.

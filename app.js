@@ -30,7 +30,7 @@ function buildCard(project) {
   if(project.image){
     const media=element(project.demo?'button':'a','project-media');
     if(project.demo){media.type='button';media.setAttribute('aria-label','Preview '+project.name);media.onclick=()=>openPreview(project,media);}else{media.href=destination(project);}
-    const img=element('img');img.src=project.image;img.alt=project.imageAlt||project.name;img.width=1440;img.height=900;img.decoding='async';img.loading=PROJECTS.indexOf(project)<2?'eager':'lazy';media.append(img);
+    const img=element('img');img.src=project.image;img.alt=project.imageAlt||project.name;img.width=1440;img.height=900;img.decoding='async';img.loading=PROJECTS.indexOf(project)<2?'eager':'lazy';if(project.imageFit==='contain')img.style.objectFit='contain';media.append(img);
     card.append(media);
   }else{const mark=element('a','source-mark');mark.href=destination(project);mark.setAttribute('aria-label','Open '+project.name);mark.append(element('strong','',project.mark||project.name.slice(0,2)),element('span','',project.download?'DESKTOP':'SOURCE'));card.append(mark);}
   const body=element('div','project-body');const heading=element('div','card-heading');const h2=element('h2');h2.append(link(destination(project),project.name));heading.append(h2,element('span','category',project.category));body.append(heading,element('p','project-description',project.description));
