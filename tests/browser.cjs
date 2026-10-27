@@ -10,6 +10,8 @@ const base=process.env.SITE_URL||'http://127.0.0.1:8770/';
     assert.equal(await page.locator('.project-card').count(),4);
     assert.ok((await page.locator('.project-media').first().boundingBox()).y<300,'Projects should appear immediately');
     assert.equal(await page.locator('.hero').count(),0);
+    assert.ok((await page.locator('h1').boundingBox()).height<65,'Page heading must stay compact');
+    assert.ok((await page.locator('.search svg').boundingBox()).width<=20,'Search icon must not expand to page size');
     assert.equal(await page.locator('.project-media img').evaluateAll(images=>images.every(image=>image.complete&&image.naturalWidth>0)),true);
     await page.locator('[data-filter="demo"]').click();assert.equal(await page.locator('.project-card').count(),2);
     await page.locator('[data-filter="download"]').click();assert.equal(await page.locator('.project-card').count(),1);
