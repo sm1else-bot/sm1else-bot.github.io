@@ -60,7 +60,7 @@ function render() {
   if(state.sort==='name')matches.sort((a,b)=>a.name.localeCompare(b.name));
   grid.classList.toggle('list',state.view==='list');
   const fragment=document.createDocumentFragment();for(const p of matches)fragment.append(buildCard(p));grid.replaceChildren(fragment);
-  $('empty').hidden=matches.length>0;$('results').textContent=matches.length===PROJECTS.length?`${PROJECTS.length} projects`:`${matches.length} of ${PROJECTS.length} projects`;
+  $('empty').hidden=matches.length>0;const noun=PROJECTS.length===1?'project':'projects';$('results').textContent=matches.length===PROJECTS.length?`${PROJECTS.length} ${noun}`:`${matches.length} of ${PROJECTS.length} ${noun}`;
   $('reset').hidden=!state.query&&state.filter==='all';
   document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===state.filter)));
   for(const view of ['grid','list'])$(view+'-view').setAttribute('aria-pressed',String(view===state.view));
