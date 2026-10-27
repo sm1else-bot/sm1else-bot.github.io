@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Dark background -->
+  <rect width="32" height="32" fill="#0c0c0c"/>
+  <!-- Red block — top left triangle -->
+  <polygon points="0,0 20,0 0,20" fill="#e8281a"/>
+  <!-- Cyan block — bottom right triangle -->
+  <polygon points="32,12 32,32 12,32" fill="#0086b3"/>
+  <!-- Thin gap/overlap line — white slash -->
+  <line x1="22" y1="0" x2="10" y2="32" stroke="#0c0c0c" stroke-width="2.5"/>
+</svg>
