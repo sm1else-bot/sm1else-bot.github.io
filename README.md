@@ -14,7 +14,7 @@ Optional `image` and `imageAlt` fields provide a real screenshot in gallery view
 
 The archive includes gallery/list views, availability filters, tag search, name sorting, and shareable query state. Browser Back restores previous filter choices. Only the view preference is saved locally. Search matches names, descriptions, categories, and tags. `/` focuses search and Escape clears it. Motion is limited to short browsing feedback and respects reduced-motion preferences.
 
-There is no build step or application backend. Search, filters, and previews run in the browser. Demo previews load only after a click, and closing them unloads the embedded page to stop playback or execution. Project names, counts, and availability come from the catalog.
+There is no application backend. A small standard-library Python build (`python tools/build_site.py`) copies public files into `_site/` and gives CSS and JavaScript URLs a content hash. This prevents browsers from combining new markup with an older cached stylesheet or script. Preview the assembled site with `python -m http.server 8000 --directory _site`. Search, filters, and previews run in the browser. Demo previews load only after a click, and closing them unloads the embedded page to stop playback or execution. Project names, counts, and availability come from the catalog.
 
 ## Hosting
 
