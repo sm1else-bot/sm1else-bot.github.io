@@ -1,37 +1,84 @@
-const grid = document.getElementById('project-grid');
-const search = document.getElementById('search');
-const dialog = document.getElementById('preview');
-const frame = document.getElementById('preview-frame');
-let filter = 'all';
+const $ = id => document.getElementById(id);
+const grid = $('project-grid'), search = $('search'), dialog = $('preview'), frame = $('preview-frame');
+const state = {filter:'all',query:'',sort:'curated',view:'grid'};
 let lastPreviewButton = null;
-function visual(project) {
-  if (project.visual === 'language') return '<span class="glyph" lang="ta">மொழி</span><span class="visual-caption">MOZHI<small>THINK IN TAMIL. BUILD IN CODE.</small></span>';
-  if (project.visual === 'wave') return '<svg viewBox="0 0 500 150" aria-hidden="true"><g stroke="currentColor" opacity=".12"><path d="M0 75H500M0 25H500M0 125H500M50 0V150M150 0V150M250 0V150M350 0V150M450 0V150"/></g><path class="wave-lines" d="M0 75C20 75 20 10 42 10S65 140 87 140S110 10 132 10S155 140 177 140S200 10 222 10S245 140 267 140S290 10 312 10S335 140 357 140S380 10 402 10S425 140 447 140S470 10 492 10"/></svg><span class="visual-label">OSCILLATOR → ENVELOPE → INSTRUMENT</span>';
-  if (project.visual === 'search') return '<div class="search-mock">⌕ &nbsp; Find what you came for.<small>Files, folders, and a faster way through.</small></div>';
-  return '<svg viewBox="0 0 500 150" aria-hidden="true"><g class="wave-lines" opacity=".45"><path d="M0 25C130 25 140 0 250 10S380 25 500 25M0 45C130 45 140 12 250 25S380 45 500 45M0 65C130 65 145 30 250 40S380 65 500 65M0 85C130 85 145 120 250 110S380 85 500 85M0 105C130 105 145 140 250 130S380 105 500 105M0 125C130 125 145 150 250 145S380 125 500 125"/></g><path d="M170 78Q235 40 330 78Q250 83 170 78Z" fill="currentColor"/></svg><span class="visual-label">AEROWORKS / VIRTUAL WIND TUNNEL</span>';
+function element(tag, className, text) {
+  const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;
+}
+function destination(project) {
+  return project.demo || project.website || project.download || project.publication || project.video || project.source;
+}
+function readLocation() {
+  const params=new URLSearchParams(location.search);
+  state.filter=['all','demo','download','source'].includes(params.get('filter'))?params.get('filter'):'all';
+  state.query=params.get('q')||'';state.sort=params.get('sort')==='name'?'name':'curated';
+  try{state.view=params.get('view')||(localStorage.getItem('projects-view')||'grid');}catch{state.view=params.get('view')||'grid';}
+  if(!['grid','list'].includes(state.view))state.view='grid';
+  search.value=state.query;$('sort').value=state.sort;
+}
+function updateLocation(replace=false) {
+  const url=new URL(location.href);for(const key of ['filter','q','sort','view'])url.searchParams.delete(key);
+  if(state.filter!=='all')url.searchParams.set('filter',state.filter);
+  if(state.query)url.searchParams.set('q',state.query);
+  if(state.sort!=='curated')url.searchParams.set('sort',state.sort);
+  if(state.view!=='grid')url.searchParams.set('view',state.view);
+  if(url.href!==location.href)history[replace?'replaceState':'pushState']({},'',url);
+}
+function link(url,label,className='') {const a=element('a',className,label);a.href=url;return a;}
+function buildCard(project) {
+  const card=element('article','project-card entering'+(!project.image?' compact':''));card.dataset.project=project.id;
+  if(project.image){
+    const media=element(project.demo?'button':'a','project-media');
+    if(project.demo){media.type='button';media.setAttribute('aria-label','Preview '+project.name);media.onclick=()=>openPreview(project,media);}else{media.href=destination(project);}
+    const img=element('img');img.src=project.image;img.alt=project.imageAlt||project.name;img.width=1440;img.height=900;img.decoding='async';img.loading='lazy';media.append(img);
+    media.append(element('span','media-action',project.demo?'↗  Preview':'Open ↗'));card.append(media);
+  }else{const mark=element('a','source-mark');mark.href=destination(project);mark.setAttribute('aria-label','Open '+project.name);mark.append(element('strong','',project.mark||project.name.slice(0,2)),element('span','',project.download?'DESKTOP':'SOURCE'));card.append(mark);}
+  const body=element('div','project-body');const heading=element('div','card-heading');const h2=element('h2');h2.append(link(destination(project),project.name));heading.append(h2,element('span','category',project.category));body.append(heading,element('p','project-description',project.description));
+  const tags=element('div','tags');
+  for(const tag of project.tags){const button=element('button','',tag);button.type='button';button.setAttribute('aria-label','Search '+tag);button.onclick=()=>{state.query=tag;search.value=tag;state.filter='all';updateLocation();render();};tags.append(button);}body.append(tags);
+  const actions=element('div','card-actions');
+  if(project.demo){actions.append(link(project.demo,'Launch ↗','primary-action'));}
+  if(project.website)actions.append(link(project.website,'Visit website ↗','primary-action'));
+  if(project.download)actions.append(link(project.download,project.downloadLabel||'Download','primary-action'));
+  if(project.video)actions.append(link(project.video,'Watch demo ↗'));
+  if(project.publication)actions.append(link(project.publication,'Publication ↗'));
+  if(project.source)actions.append(link(project.source,'Source ↗',!project.demo&&!project.download?'primary-action':''));
+  if(project.extra&&project.demo)actions.append(link(project.extra.url,project.extra.label));
+  const details=element('div','details');details.id='details-'+project.id;details.hidden=true;
+  if(project.note)details.append(element('p','',project.note));
+  if(project.extra&&!project.demo)details.append(link(project.extra.url,project.extra.label+' ↗'));
+  const toggle=element('button','details-toggle','Details +');toggle.type='button';toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls',details.id);
+  toggle.onclick=()=>{details.hidden=!details.hidden;toggle.setAttribute('aria-expanded',String(!details.hidden));toggle.textContent=details.hidden?'Details +':'Details −';};actions.append(toggle);
+  body.append(actions,details);card.append(body);return card;
 }
 function render() {
-  const query = search.value.trim().toLowerCase();
-  const projects = PROJECTS.filter(p => (filter === 'all' || p.type === filter) && [p.name,p.category,p.description,...p.tags].join(' ').toLowerCase().includes(query));
-  grid.replaceChildren();
-  for (const project of projects) {
-    const card = document.createElement('article');card.className='project-card';card.dataset.project=project.id;
-    card.innerHTML=`<div class="project-visual ${project.visual}">${visual(project)}</div><div class="project-body"><div class="card-top"><span>${project.number} / ${project.category}</span><span>${project.demo?'● LIVE DEMO':'SOURCE AVAILABLE'}</span></div><h3>${project.name}</h3><p class="project-description">${project.description}</p><div class="tags">${project.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="card-actions"></div></div>`;
-    const actions=card.querySelector('.card-actions');
-    if(project.demo){const open=document.createElement('a');open.href=project.demo;open.textContent='Open demo ↗';actions.append(open);
-      const preview=document.createElement('button');preview.className='preview-button';preview.textContent='Quick preview';preview.onclick=()=>openPreview(project,preview);actions.append(preview);}
-    if(project.source){const source=document.createElement('a');source.href=project.source;source.className='source-link';source.textContent='View source ↗';actions.append(source);}
-    if(project.extra){const extra=document.createElement('a');extra.href=project.extra.url;extra.className='guide-link';extra.textContent=project.extra.label+' →';card.querySelector('.project-body').append(extra);}
-    grid.append(card);
-  }
-  document.getElementById('empty').hidden=projects.length>0;
-  document.getElementById('results').textContent=`${projects.length} of ${PROJECTS.length} projects`;
+  const query=state.query.trim().toLocaleLowerCase();
+  const matches=PROJECTS.filter(p=>(state.filter==='all'||Boolean(p[state.filter]))&&[p.name,p.category,p.description,...p.tags].join(' ').toLocaleLowerCase().includes(query));
+  if(state.sort==='name')matches.sort((a,b)=>a.name.localeCompare(b.name));
+  grid.classList.toggle('list',state.view==='list');
+  const fragment=document.createDocumentFragment();for(const p of matches)fragment.append(buildCard(p));grid.replaceChildren(fragment);
+  $('empty').hidden=matches.length>0;$('results').textContent=matches.length===PROJECTS.length?`${PROJECTS.length} projects`:`${matches.length} of ${PROJECTS.length} projects`;
+  $('reset').hidden=!state.query&&state.filter==='all';
+  document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===state.filter)));
+  for(const view of ['grid','list'])$(view+'-view').setAttribute('aria-pressed',String(view===state.view));
 }
-function openPreview(project,button){lastPreviewButton=button;document.getElementById('preview-title').textContent=project.name;document.getElementById('preview-open').href=project.demo;frame.title=project.name+' live preview';frame.src=project.demo;dialog.showModal();document.getElementById('preview-close').focus();}
-document.getElementById('preview-close').onclick=()=>dialog.close();
-dialog.addEventListener('close',()=>{frame.src='about:blank';lastPreviewButton?.focus();});
-dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
-document.querySelectorAll('[data-filter]').forEach(button=>button.onclick=()=>{filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));render();});
-search.addEventListener('input',render);
-document.getElementById('all-count').textContent=PROJECTS.length;
-render();
+function openPreview(project,button) {
+  lastPreviewButton=button;$('preview-title').textContent=project.name;$('preview-open').href=project.demo;
+  $('preview-status').textContent='Loading…';frame.title=project.name+' live preview';frame.src=project.demo;dialog.showModal();$('preview-close').focus();
+}
+frame.addEventListener('load',()=>{if(dialog.open)$('preview-status').textContent='';});
+$('preview-close').onclick=()=>dialog.close();
+// Unloading the frame stops audio and workers. Native dialog restores keyboard focus.
+ dialog.addEventListener('close',()=>{frame.src='about:blank';lastPreviewButton?.focus();});
+ dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+function clearFilters(){state.query='';state.filter='all';search.value='';updateLocation();render();search.focus();}
+$('reset').onclick=clearFilters;$('empty-reset').onclick=clearFilters;
+search.addEventListener('input',()=>{state.query=search.value;updateLocation(true);render();});
+$('sort').onchange=()=>{state.sort=$('sort').value;updateLocation();render();};
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{state.filter=b.dataset.filter;updateLocation();render();});
+for(const view of ['grid','list'])$(view+'-view').onclick=()=>{state.view=view;try{localStorage.setItem('projects-view',view);}catch{}updateLocation();render();};
+window.addEventListener('popstate',()=>{readLocation();render();});
+document.addEventListener('keydown',e=>{if(dialog.open||e.target.closest('input,textarea,select,[contenteditable]'))return;if(e.key==='/'&&!e.ctrlKey&&!e.metaKey){e.preventDefault();search.focus();}});
+search.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();clearFilters();search.blur();}});
+$('total-count').textContent=PROJECTS.length;$('all-count').textContent=PROJECTS.length;
+readLocation();render();
