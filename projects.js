@@ -4,9 +4,10 @@
 const PROJECTS = [
   {id:'trackback',name:'Trackback',category:'Music discovery',kind:'webapp',
     description:'Find videos that credit your music. Search YouTube descriptions for artist names, aliases and tracks, inspect the evidence, and verify credits.',
-    tags:['Python','FastAPI','React','SQLite FTS5'],mark:'Tb',markLabel:'WEB APP',
+    tags:['Python','FastAPI','React','SQLite FTS5'],image:'assets/trackback-index.png',imageAlt:'Trackback index dashboard showing 3,534 indexed descriptions, 1,056 channels, and evidence scoring rules',imageFit:'contain',
+    demo:'trackback/',
     website:'https://trackback.fyi/',websiteLabel:'Visit Trackback',
-    note:'Private beta. Public sign-up is coming soon. Searches a progressively expanding index; YouTube coverage is incomplete. Video views are associated views, not track-specific plays.'},
+    note:'The in-site preview shows the public website. The application is in private beta; public sign-up is coming soon. Searches a progressively expanding index; YouTube coverage is incomplete. Video views are associated views, not track-specific plays.'},
   {id:'triage',name:'TRIAGE',category:'Engineering case study',kind:'research',
     description:'The YHack business-risk prototype and its evolution into TRIAGE+, an evidence-governed analytical workstation.',
     tags:['Python','React','Evidence systems'],image:'assets/triage-workstation.webp',imageAlt:'TRIAGE+ report with explicitly classified findings in a synthetic test case',

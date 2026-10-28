@@ -16,4 +16,5 @@ for name in ("styles.css", "projects.js", "app.js"):
 (SITE / "index.html").write_text(html, encoding="utf-8")
 shutil.copyfile(ROOT / "favicon.svg", SITE / "favicon.svg")
 shutil.copytree(ROOT / "assets", SITE / "assets", dirs_exist_ok=True)
+shutil.copytree(ROOT / "trackback", SITE / "trackback", dirs_exist_ok=True)
 print("Built _site with content-versioned assets")
