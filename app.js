@@ -32,7 +32,7 @@ function buildCard(project) {
     if(project.demo){media.type='button';media.setAttribute('aria-label','Preview '+project.name);media.onclick=()=>openPreview(project,media);}else{media.href=destination(project);}
     const img=element('img');img.src=project.image;img.alt=project.imageAlt||project.name;img.width=1440;img.height=900;img.decoding='async';img.loading=PROJECTS.indexOf(project)<2?'eager':'lazy';if(project.imageFit==='contain')img.style.objectFit='contain';media.append(img);
     card.append(media);
-  }else{const mark=element('a','source-mark');mark.href=destination(project);mark.setAttribute('aria-label','Open '+project.name);mark.append(element('strong','',project.mark||project.name.slice(0,2)),element('span','',project.download?'DESKTOP':'SOURCE'));card.append(mark);}
+  }else{const mark=element('a','source-mark');mark.href=destination(project);mark.setAttribute('aria-label','Open '+project.name);mark.append(element('strong','',project.mark||project.name.slice(0,2)),element('span','',project.markLabel||(project.download?'DESKTOP':'SOURCE')));card.append(mark);}
   const body=element('div','project-body');const heading=element('div','card-heading');const h2=element('h2');h2.append(link(destination(project),project.name));heading.append(h2,element('span','category',project.category));body.append(heading,element('p','project-description',project.description));
   const tags=element('div','tags');
   for(const tag of project.tags){const button=element('button','',tag);button.type='button';button.setAttribute('aria-label','Search '+tag);button.onclick=()=>{state.query=tag;search.value=tag;state.filter='all';updateLocation();render();};tags.append(button);}body.append(tags);
