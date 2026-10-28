@@ -41,7 +41,7 @@ function buildCard(project) {
     actions.append(link(project.demo,'Launch ↗','primary-action'));
     const preview=element('button','preview-action','Preview');preview.type='button';preview.setAttribute('aria-label','Preview '+project.name);preview.onclick=()=>openPreview(project,preview);actions.append(preview);
   }
-  if(project.website)actions.append(link(project.website,'Visit website ↗','primary-action'));
+  if(project.website)actions.append(link(project.website,(project.websiteLabel||'Visit website')+' ↗','primary-action'));
   if(project.download)actions.append(link(project.download,project.downloadLabel||'Download','primary-action'));
   if(project.video)actions.append(link(project.video,'Watch demo ↗'));
   if(project.publication)actions.append(link(project.publication,'Publication ↗'));

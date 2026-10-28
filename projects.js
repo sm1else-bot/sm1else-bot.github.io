@@ -2,6 +2,11 @@
    publication, source, extra. Only include verified URLs. Thumbnails are actual
    application screenshots; projects without screenshots use a compact entry. */
 const PROJECTS = [
+  {id:'triage',name:'TRIAGE',category:'Engineering case study',kind:'research',
+    description:'The YHack business-risk prototype and its evolution into TRIAGE+, an evidence-governed analytical workstation.',
+    tags:['Python','React','Evidence systems'],image:'assets/triage-workstation.webp',imageAlt:'TRIAGE+ report with explicitly classified findings in a synthetic test case',
+    website:'triageplus/',websiteLabel:'Read case study',source:'https://github.com/sm1else-bot/triageplus',
+    note:'Covers the original team project and subsequent engineering. Source contains the static publication. The original demo is linked in the case study; the TRIAGE+ interactive demo is coming soon.'},
   {id:'mozhi',name:'Mozhi',category:'Programming language',kind:'language',
     description:'Tamil-inspired language with a browser interpreter and eight interactive lessons.',
     tags:['Language design','Python','Pyodide'],image:'assets/mozhi.jpg',imageAlt:'Mozhi Studio running the hello-world lesson',

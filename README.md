@@ -20,7 +20,7 @@ There is no application backend. A small standard-library Python build (`python 
 
 GitHub Actions publishes these static files on pushes to `main`. Project implementations stay in their own repositories. No custom domain is configured yet. Once DNS is ready, configure `projects.jessenth.com` on this repository's Pages settings; leave individual project repositories' custom domains empty to inherit the account domain.
 
-The collection currently contains Mozhi and WebOS Snow. WebOS Snow links to its existing deployment at webos.jessenth.com and uses a screenshot supplied by the project author.
+The collection contains TRIAGE, Mozhi and WebOS Snow. TRIAGE links to the static engineering case study at `triageplus/`; its interactive workstation demo is coming soon. The private application repository is separate. WebOS Snow links to its existing deployment at webos.jessenth.com and uses a screenshot supplied by the project author.
 
 ## Browser checks
 
