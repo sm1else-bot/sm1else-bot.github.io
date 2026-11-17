@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An engineering case study of Helix, the HackPrinceton 2026 adaptive reuse workstation.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Helix — Engineering Archive | Jessenth Ebenezer</title>
+<link rel="stylesheet" href="../style.css">
+<script defer src="../archive.js"></script>
+</head>
+<body>
+<header><a href="../">← Helix case study</a><a href="https://github.com/sm1else-bot/helix">Source repository ↗</a></header>
+<main>
+<section class="hero">
+<p class="eyebrow">Engineering case study · HackPrinceton 2026</p>
+<h1>Helix</h1><p class="subtitle">Engineering Archive</p>
+<p class="subtitle">From a commercial listing to an investment decision.</p>
+<p class="intro">A commercial space can look viable in search and still fail on clear height, lease cost, or a use that needs approval. Helix carries one selected space through building investigation, business screening, and financial modeling so the decision can be traced back to its evidence.</p>
+<figure class="workstation"><img src="../intake.jpg" width="1280" height="850" alt="Helix intake showing the investigation stages, markets, budget and funding inputs"><figcaption>Final Helix application at the start of an investigation. Captured locally with an empty intake.</figcaption></figure>
+</section>
+<div class="layout">
+<nav aria-label="Case study"><a href="#screenshots">Application screenshots</a><a href="#origins">Origins and prototypes</a><a href="#architecture">Application architecture</a><a href="#evidence">Building evidence</a><a href="#screening">Screening and reporting</a><a href="#finance">Finance Lab</a><a href="#verification">Verification and limits</a><a href="#archive">Saved investigations</a></nav>
+<article>
+<section id="archive"><p class="eyebrow">Saved investigations</p><h2>Open the offline case files</h2>
+<p id="archive-instructions">Select your local <code>.offline-archive/scenarios</code> folder. The viewer reads the selected investigations and images in this browser. The portfolio distribution contains the viewer code only. Choose a case to explore discovery, source evidence, screening, saved reports and any available financial results. The archive can also include a preserved alternate investigation from the selection process.</p>
+<label id="folder-label" for="folder">Select the scenarios folder</label>
+<input id="folder" type="file" webkitdirectory multiple>
+<p id="status" role="status"></p>
+<div id="case-control" hidden><label for="case-select">Investigation</label> <select id="case-select"></select></div>
+<div id="case-view"></div>
+<noscript><p>Enable JavaScript to open local case files.</p></noscript>
+</section>
+<section id="screenshots"><p class="eyebrow">Application screenshots</p><h2>Inside the Helix workstation</h2>
+<p>Open a screenshot at full size to read the interface.</p>
+<div id="local-screenshots" hidden>
+<figure class="workstation"><a href="../private-screenshots/investigation.png"><img data-src="../private-screenshots/investigation.png" alt="Stage 2 building investigation showing the South Broadway evidence dossier and aerial gallery"></a><figcaption>Stage 2 · South Broadway building investigation, with exterior imagery and evidence findings.</figcaption></figure>
+<figure class="workstation"><a href="../private-screenshots/screening.png"><img data-src="../private-screenshots/screening.png" alt="Stage 3 screening showing shortlisted businesses and cost ranges"></a><figcaption>Stage 3 · South Broadway business screening. The ranked cards show costs and conditions for each shortlisted use.</figcaption></figure>
+<figure class="workstation"><a href="../private-screenshots/finance.png"><img data-src="../private-screenshots/finance.png" alt="Finance Lab showing inputs, capital requirements, line items and cash runway"></a><figcaption>Finance Lab · A separate indoor pickleball test run showing inputs, line items, and twelve-month cash runway.</figcaption></figure>
+</div>
+<p id="screenshot-note">The intake screenshot is shown above. The local preview includes the saved investigation, screening, and Finance Lab screenshots.</p>
+</section>
+<section id="origins"><p class="eyebrow">Origins and prototypes</p><h2>Two ways into the same decision</h2>
+<p>The idea started with a pattern Jessenth noticed in New York nightlife. Warehouses built for entirely different work had become rave venues. At the same time, news about vacant offices and conversions made the same question visible at a different scale. A building can outlive its original use. Whether another use can work depends on the specific space, its surroundings, the capital required, and what the relevant authorities allow.</p>
+<p>At HackPrinceton, the team turned that observation into a practical investigation. Git records how the implementation developed from the sponsor-data playground to the final Helix branch shown at judging.</p>
+<p>The earliest project work in Git is a Houston sponsor-data playground. It added a minimal address browser and embedded Matterport tours before there was a full workflow. The Northbelt redevelopment brief and Tanner Road workspace then made the question concrete: given an existing building, what uses could fit, what would it cost to open, and how would that change cash runway? The early Nessie pilot let the team compare tenant scenarios against simulated cash and recurring bills.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/commit/8233fe3">Houston playground</a> · <a href="https://github.com/sm1else-bot/helix/commit/48453f1">Northbelt brief</a> · <a href="https://github.com/sm1else-bot/helix/commit/2ff700e">Tanner workspace</a></p>
+<h3>Parallel checks converged in Maximo</h3>
+<p>Location research had to return findings for the selected market and translate them into a decision and next checks. Reconciliation gained a shared record format and time-aware tenancy checks, so older occupancy observations could be distinguished from current claims. A physical-fit branch added Vexcel exterior and Matterport interior context. The deal branch carried the kit’s actual asking-rent terms into the cash simulation.</p>
+<p>Maximo brought these checks together around a typed decision context. It gated cash scenarios on property eligibility, let users compare conditional alternatives and edit itemized planning costs, and made parcel- and suite-scoped approvals explicit. Its location flow also retained public context when specialists failed. That was the first joined property-and-cash workflow in this lineage.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/commit/d6e8703">Evidence records</a> · <a href="https://github.com/sm1else-bot/helix/commit/a69c27e">Maximo decision context</a> · <a href="https://github.com/sm1else-bot/helix/commit/8a8d20d">Pilot verification</a></p>
+<h3>From checking one space to comparing a market</h3>
+<p>Market ranking widened the search to every listed space for a use and budget. One correction scaled build-out by suite size and kept budget fit unknown when rent was missing. A separate rent model used signed lease deals to estimate a range, preserving the distinction between an asking rent and a modeled comparison. Neighborhood work combined Census trends, nearby facilities, category move-ins and move-outs, historical analogues and site context. It expanded to 26 business categories and put physical feasibility before demand ranking.</p>
+<p>Compliance developed in parallel. The resolver mapped the property coordinates to the permitting jurisdiction, then the triage workflow checked the building and proposed use against appropriate sources. The same team had assembled sourced cash-to-open benchmarks and a deep review path by the time Suite introduced the budget-first scan.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/commit/4c53b1f">Market ranking correction</a> · <a href="https://github.com/sm1else-bot/helix/commit/ce0ecd4">Rent model evaluation</a> · <a href="https://github.com/sm1else-bot/helix/commit/1026df2">Neighborhood evaluation</a> · <a href="https://github.com/sm1else-bot/helix/commit/8675a21">Compliance research</a></p>
+<h3>The market-first branch · <code>/suite</code></h3>
+<p>The suite turned those modules into a venture workstation. A user could enter with a budget, a business, a space, or a combination of them. The interface reordered the same toolkit around the starting point. A budget-first search used the scan funnel and a Houston map to show which buildings survived successive gates. A space-first search checked the building before doing broader research. The space drawing and low-poly scenes gave users a way to explore an approximate layout, with source and scope limits.</p>
+<p>The verdict screen grouped reasons as blocks, checks, support, and unknowns, linking them to the relevant analysis and sources. The demo branch added a twelve-month cash view and Nessie sandbox data. The work taught the team to show where opportunities dropped out and to keep a property pin, evidence source, and financial assumption attached to a decision.</p>
+<h3>The space-first branch · <code>feat/flow</code></h3>
+<p>The <code>/flow</code> route first presented a saved venture as one scrolling story. It preserved Suite’s four entry points and moved the questions, findings, signals, and sources ahead of the verdict. The progress rail linked the story sheets, and the cash view and Nessie option carried the decision into planning. This was a change in presentation as well as a bridge to the next implementation. Later work on the same branch narrowed screening to a selected advertised space. Its Stage 3 handoff evaluated all 26 business categories against building fit, affordability, and compliance. It emitted ordered outcomes, a conditional shortlist, missing evidence and Stage 4 inputs. The final app pins this implementation and invokes it through a worker. The documented lineage is the <code>feat/flow</code> branch and its Stage 3 endpoint.</p>
+<h3>MAXIMUS became the final Helix app</h3>
+<p>The MAXIMUS intake and discovery branches made the investigation sequential: collect inputs, select a listing and suite, investigate that exact space, then evaluate uses. Later branches added the evidence dossier, opportunity report, explicit business selection, Finance Lab handoff and investment memorandum. The final application lives in <code>project helix/</code>. Earlier prototypes remain available in <code>playground/</code>.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/commit/3cc1ab6">Suite entry points</a> · <a href="https://github.com/sm1else-bot/helix/commit/dd2acfa">Flow story view</a> · <a href="https://github.com/sm1else-bot/helix/commit/1cc494d">Flow screening handoff</a> · <a href="https://github.com/sm1else-bot/helix/commit/34e4f3e">Final memorandum</a></p></section>
+
+<section id="architecture"><p class="eyebrow">Application architecture</p><h2>One space, six steps</h2>
+<p><code>app.py</code> serves the browser interface and JSON endpoints through Python’s threaded HTTP server. <code>maximus.js</code> renders the investigation and polls Stage 2. The Finance Lab and report have their own pages. The front end hands off the investigation identifier as the user moves between views.</p>
+
+<ol class="pipeline">
+<li><strong>Intake.</strong> <code>intake.py</code> validates market, funding mode, budget and use preferences.</li>
+<li><strong>Discovery.</strong> <code>costar_service.py</code> reads the downloaded CoStar kit. <code>discovery.py</code> normalizes lease and sale terms, applies budget rules, assigns stable identifiers and attaches optional model explanations. A separate Tavily check can add verification evidence.</li>
+<li><strong>Building investigation.</strong> The selected listing and discovery snapshot become a saved handoff. The Stage 2 worker collects evidence and records progress and source availability.</li>
+<li><strong>Screening and opportunity report.</strong> The pinned Stage 3 worker evaluates the selected lease space. The opportunity report uses the resulting shortlist and evidence snapshots.</li>
+<li><strong>Finance Lab.</strong> An explicit business selection locks the property, space and business for the financial handoff.</li>
+<li><strong>Memorandum.</strong> <code>final_report.py</code> assembles the saved property, physical, screening, selection and financial evidence into one report.</li>
+</ol>
+<h3>Records written at each boundary</h3>
+<p>Discovery sessions are held in memory while the user compares listings. Selecting a space writes the Stage 1 snapshot before starting Stage 2. Polling reads the investigation’s status, and the completed dossier is recorded with the handoff. Stage 3 saves its result against that same investigation. Report generations preserve the source snapshots separately from the current report pointer. Finance Lab records its last simulation alongside the chosen business.</p>
+<p>These records make the saved chain inspectable. They also define its operational limits: an unsaved discovery session can disappear when the server restarts, and the original demo replay can fall through to live providers for an unmatched intake. The portfolio reader uses the saved results directly and does not run the Helix backend.</p>
+<p>Identity is carried as property, listing, space and investigation IDs. An unnamed suite may also acquire a derived Stage 3 key such as <code>listing:38268171:7205</code>. The worker checks that key against the underlying listing and space IDs before running, and rejects ambiguous matches. That matters when the same building advertises several similar suites.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/tree/main/project%20helix">Final app source</a> · <a href="https://github.com/sm1else-bot/helix/blob/main/project%20helix/stage3_engine/README.md">Stage 3 adapter</a></p></section>
+
+<section id="evidence"><p class="eyebrow">Building evidence</p><h2>What belongs to the suite?</h2>
+<p>Stage 2 separates property facts, imagery, visual interpretation and verification tasks. CoStar supplies the linked listing and recorded property facts. Vexcel supplies georeferenced exterior views and footprint candidates. Matterport supplies model identity, room measurements and panorama locations when available. The orchestrator combines provider results into a dossier with source status, discrepancies, physical observations and a compliance preflight.</p>
+<p>The Matterport adapter checks address identity and quarantines unmatched models. Even for a matched building, room measurements and camera views describe what the scan covers. The advertised suite still needs a verified relationship to that geometry. Vexcel footprint containment likewise establishes more than a nearest-footprint match. Those distinctions survive into the dossier.</p>
+<p>Vision observations refer to a specific camera face or exterior image and may carry a bounding box. The validation layer rejects conclusions about hidden systems, safety or compliance. An aerial image can show visible roof features. Suitability for a use still depends on measurements, landlord records and the relevant authority.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/tree/main/project%20helix/stage2">Stage 2 implementation</a></p></section>
+
+<section id="screening"><p class="eyebrow">Screening and reporting</p><h2>Keep the gate decisions inspectable</h2>
+<p>The Stage 3 adapter starts the pinned engine in a separate interpreter to isolate its vendored modules from the final app. The engine verifies its selected space, then evaluates the registry of 26 uses. The gate results distinguish building fit, affordability and compliance, retain unknown evidence, and carry the engine version and output hash. The result can legitimately have an empty shortlist.</p>
+<p>The opportunity report snapshots its Stage 1–3 inputs and gives the language model a bounded evidence index. Validation checks the candidate order and evidence references. The model can explain the screening, while the deterministic result remains the authority for which uses are shortlisted. Each report generation has its own identifier, and the next stage checks it against the saved screening hash.</p>
+<h3>Market evidence and eligibility have different jobs</h3>
+<p>The earlier Houston neighborhood pipeline uses demographic, nearby supply and occupancy signals. The flow branch explicitly leaves Los Angeles demand unknown instead of applying a Houston-calibrated model to a second market. Compliance uses a parcel point and cached jurisdiction data, with separate questions for a building and a proposed business. A shortlisted use can still carry unresolved conditions.</p>
+<p>Some Stage 3 results depend on locally cached jurisdiction and research. South Broadway initially returned zero shortlisted uses with the jurisdiction cache absent. After the existing cache was restored, the same property and space returned three. Both results were preserved so the change in evidence can be inspected.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/blob/main/project%20helix/opportunity_report.py">Opportunity report contract</a> · <a href="https://github.com/sm1else-bot/helix/blob/main/project%20helix/stage4_handoff.py">Selection and revalidation</a></p></section>
+
+<section id="finance"><p class="eyebrow">Finance Lab</p><h2>Model the decision under explicit assumptions</h2>
+<p>The handoff ties a business choice to the selected space, its area, the intake budget and reserve status, and the Stage 3 rent and build assumptions. Finance Lab records any input deviations and reconciles its cash-to-open numbers against the preceding screening. Its local engine compares cost cases, starting cash, opening timing, and loan sensitivity. Saved Nessie account data is sandbox evidence when used.</p>
+<p>The twelve-month model charges recorded operating outflows against cash. Its zero-revenue baseline explains why a delay can move the opening date without changing the ending balance when no delay-specific costs are modeled. Missing rent or benchmark costs can prevent a complete capital estimate. The final memorandum preserves the financial context alongside evidence gaps and next actions.</p>
+<p class="refs"><a href="https://github.com/sm1else-bot/helix/blob/main/project%20helix/finance_lab/engine.py">Financial engine</a> · <a href="https://github.com/sm1else-bot/helix/blob/main/project%20helix/final_report.py">Memorandum composition</a></p></section>
+
+<section id="verification"><p class="eyebrow">Verification and limits</p><h2>What the saved run establishes</h2>
+<p>The integration check recorded 411 passing Python tests and 10 skips across Helix and the earlier playground. A later run with restored investigation data exposed a data-dependent profile-size assertion. The preservation branch added checks for file hashes, safe archive paths, and failed checkpoint writes. These checks establish code behavior against their inputs. They do not measure provider accuracy or business outcomes.</p>
+<p>South Broadway has the full saved chain through the memorandum. Four other selected cases have saved discovery, Stage 2 evidence, screening and opportunity reports, but no eligible business for the saved financial handoff. Hardy Road includes six original cube faces from one camera position. The archive can show that saved view and the aerial images, while room-to-room navigation and an exported 3D model remain unavailable.</p>
+<p>Helix was developed as a team project at HackPrinceton. The linked history identifies implementation commits and branch handoffs. It does not provide a complete record of team design and presentation contributions.</p></section>
+
+
+</article>
+</div>
+</main>
+<footer>Helix · HackPrinceton 2026</footer>
+</body>
+</html>

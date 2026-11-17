@@ -1,0 +1,11 @@
+:root{color-scheme:light;--ink:#152b26;--muted:#475f55;--paper:#f6f6ef;--line:#cbd7cd;--green:#21624d}
+*{box-sizing:border-box}html{scroll-padding-top:1rem}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.7 system-ui,sans-serif}
+header,main,footer{max-width:1260px;margin:auto;padding:0 clamp(20px,5vw,65px)}header{display:flex;justify-content:space-between;gap:1rem;padding-block:1rem;border-bottom:1px solid var(--line)}
+a{color:var(--green);text-underline-offset:.2em}.hero{padding:clamp(45px,9vw,112px) 0;border-bottom:1px solid var(--line)}.eyebrow{letter-spacing:.13em;text-transform:uppercase;font-size:.72rem;font-weight:780;color:var(--green)}
+h1,h2{font-family:Georgia,serif;font-weight:normal;line-height:1.05;margin:0}h1{font-size:clamp(5rem,15vw,12rem);letter-spacing:-.075em}.subtitle{font:clamp(1.5rem,4vw,3rem)/1.1 Georgia,serif;margin:.6em 0}.intro{max-width:64ch;color:var(--muted)}
+.layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:clamp(25px,6vw,80px)}nav{position:sticky;top:1rem;align-self:start;padding:2rem 0;font-size:.9rem}nav a{display:block;margin-bottom:.55rem}
+article section{padding:2.8rem 0;border-bottom:1px solid var(--line)}h2{font-size:clamp(2rem,5vw,3.5rem)}h3{margin:1.7em 0 .4em}code{overflow-wrap:anywhere;font-size:.87em}.refs{font-size:.9rem}.pipeline{padding-left:1.5em}.pipeline li{margin:.6em 0}
+input,select{display:block;margin:.5rem 0 1rem;max-width:100%;font:inherit;color:inherit}details{border:1px solid var(--line);padding:.7rem 1rem;margin:.65rem 0;background:#fff}summary{cursor:pointer;font-weight:700}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.82rem;max-height:34rem;overflow:auto}figure{margin:.6rem 0}figure img{display:block;width:100%;height:auto}figcaption{color:var(--muted); font-size:.85rem}.gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}footer{padding-block:2rem;color:var(--muted)}
+@media(max-width:760px){.layout{display:block}nav{position:static;display:flex;flex-wrap:wrap;gap:.5rem 1rem;padding:1rem 0}nav a{margin:0}article section{padding:2rem 0}}
+select{width:min(100%,32rem)}#case-view{overflow-wrap:anywhere}.gallery>*{min-width:0}
+.workstation{margin:1.6rem 0}.workstation img{border:1px solid var(--line);border-radius:12px}.workstation figcaption{margin-top:.45rem}

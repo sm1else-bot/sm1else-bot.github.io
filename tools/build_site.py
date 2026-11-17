@@ -17,4 +17,9 @@ for name in ("styles.css", "projects.js", "app.js"):
 shutil.copyfile(ROOT / "favicon.svg", SITE / "favicon.svg")
 shutil.copytree(ROOT / "assets", SITE / "assets", dirs_exist_ok=True)
 shutil.copytree(ROOT / "trackback", SITE / "trackback", dirs_exist_ok=True)
+helix = SITE / "helix"
+helix.mkdir(exist_ok=True)
+for name in ("archive/index.html", "style.css", "archive.js", "intake.jpg"):
+    (helix / name).parent.mkdir(exist_ok=True)
+    shutil.copyfile(ROOT / "helix" / name, helix / name)
 print("Built _site with content-versioned assets")
