@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Helix, an adaptive reuse intelligence platform built at HackPrinceton 2026.">
+<title>Helix — What could this building become?</title>
+<link rel="stylesheet" href="case.css">
+<script defer src="case.js"></script>
+</head>
+<body>
+<header class="shell mast"><a href="../">Jessenth Ebenezer / Projects</a><a href="https://github.com/sm1else-bot/helix">Source ↗</a></header>
+<main>
+<section class="shell hero">
+<p class="eyebrow">Helix · HackPrinceton 2026</p>
+<h1>What could this building become?</h1>
+<p class="lede">Helix investigates what businesses could operate in an existing commercial space, what might rule them out, and how much capital it would take to open.</p>
+<p class="meta">Team project · Rapid prototyping · Full-stack engineering · Spatial intelligence &amp; AI</p>
+<figure class="hero-shot"><a id="hero-link" href="intake.jpg"><img id="hero-image" src="intake.jpg" width="1280" height="850" alt="Helix intake and investigation stage navigation"></a><figcaption id="hero-caption">The final Helix application · investigation intake</figcaption></figure>
+</section>
+<section class="shell split section">
+<p class="eyebrow">01 / The idea</p>
+<div><h2>A building can outlive its first use.</h2>
+<p>I was struck by how much New York nightlife happens in buildings made for something else. A warehouse becomes a rave venue. News about vacant offices and conversions raised the same question at a much larger scale. What future uses might be hiding in a building’s existing footprint?</p>
+<p>A promising listing and a manageable rent only get you so far. An operator still needs to know whether the ceiling clears the equipment, whether vehicles can get in, what the use requires locally, and how long the business can carry costs before opening. Each answer comes from a different kind of evidence. At HackPrinceton, we built one investigation that could carry those answers forward together.</p></div>
+</section>
+<section class="case-band" id="broadway">
+<div class="shell section">
+<p class="eyebrow">02 / The saved investigation</p>
+<h2>One building. 26 possible uses.</h2>
+<p class="lede">1250 S Broadway, Los Angeles. We followed one listed industrial space from discovery through a modeled investment decision.</p>
+<div class="metrics"><div><strong>26</strong><span>business uses screened</span></div><div><strong>3</strong><span>uses shortlisted</span></div><div><strong>$530,432</strong><span>modeled base cash to open</span></div></div>
+<div class="journey" aria-label="Investigation sequence"><span>Intake</span><span>Discovery</span><span>Building</span><span>Screening</span><span>Finance</span><span>Memorandum</span></div>
+<div class="walk">
+<figure id="walk-figure"><a id="walk-link" href="intake.jpg"><img id="walk-image" src="intake.jpg" loading="lazy" alt="Helix application intake"></a><figcaption id="walk-caption">Final application · intake</figcaption></figure>
+<div class="walk-copy">
+<p class="eyebrow">Walk through the case</p>
+<div class="choices" aria-label="Walkthrough views"><button type="button" data-step="space" aria-pressed="true">Space</button><button type="button" data-step="uses" aria-pressed="false">Uses</button><button type="button" data-step="memo" aria-pressed="false">Decision</button></div>
+<div id="walk-text" aria-live="polite"><h3>Investigate the selected space</h3><p>Helix fixed the investigation to a 7,205-square-foot advertised space. Exterior evidence, recorded dimensions, and unresolved site questions followed that selection into screening.</p></div>
+</div></div>
+</div>
+</section>
+<section class="shell split section">
+<p class="eyebrow">03 / Building intelligence</p>
+<div><h2>Each source answers a different question.</h2>
+<p>CoStar tells us what is being offered. Vexcel’s overhead and oblique views give context for the footprint, approaches, and exterior. Matterport brings the investigation inside, where scan coverage and available measurements can inform the next inspection. Vision models can point to visible features and tie an observation back to an image.</p>
+<p>The difficult part is deciding where that evidence applies. A scan can match the address while its relationship to the advertised suite remains unclear. A building-level height field leaves the suite’s usable clearance open. Helix carries those scope differences forward so an operator knows what to measure next.</p>
+<div id="aerial-controls" class="choices" hidden aria-label="South Broadway aerial views"></div>
+<figure id="aerial" hidden><a id="aerial-link"><img id="aerial-image" loading="lazy" alt="South Broadway aerial evidence"></a><figcaption id="aerial-caption"></figcaption></figure></div>
+</section>
+<section class="shell section">
+<p class="eyebrow">04 / Engineering judgment</p>
+<h2>Give the model evidence.<br>Give the decision rules.</h2>
+<p class="lede">We anchored every stage to a selected space. That gave the workflow a way to detect when two records described different parts of the same building.</p>
+<div class="diagram" role="group" aria-label="Helix architecture">
+<div><b>Source evidence</b><span>Listing records · imagery · research</span></div>
+<div><b>Reconcile identity</b><span>Property → listing → suite, with evidence references</span></div>
+<div class="fork"><div><b>Deterministic screening</b><span>Building fit · affordability · compliance</span></div><div><b>Model-assisted interpretation</b><span>Visible observations · explanation with evidence references</span></div></div>
+<div><b>Saved investigation</b><span>Shortlist → financial handoff → memorandum</span></div>
+</div>
+<div class="columns"><p>Independent collectors and analysis components feed a sequential workflow. The screening engine ranks uses that clear the gates. AI assists with evidence interpretation and the opportunity report, while report validation checks that the candidate order and references match the saved inputs.</p><p>Saving the discovery snapshot, dossier, screening and report together made it possible to revisit the investigation after the event. It also made failures legible. A missing jurisdiction cache changed the Broadway shortlist, and the two runs exposed exactly where the evidence entered the decision.</p></div>
+</section>
+<section class="shell split section">
+<p class="eyebrow">05 / Finance Lab</p>
+<div><h2>What does it take to open?</h2>
+<p>Auto repair was selected from the Broadway shortlist. The saved base case estimated <strong>$530,432</strong> to open against a <strong>$900,000</strong> budget. Its assumptions included a zero-dollar reserve and a twelve-month no-revenue cash view. These are modeled inputs and outputs from the saved investigation.</p>
+<div class="capital" role="img" aria-label="Of $900,000 modeled starting cash, $530,432 goes to opening capital and $369,568 remains after modeled opening costs"><div></div></div><p class="caption">$530,432 modeled opening capital · $369,568 modeled headroom</p>
+<p>Finance Lab brings lease terms, build-out, upfront capital, recurring expenses, opening delay, and proposed financing into the same model. Low, base, and high scenarios let an operator see which assumptions move the decision. The memorandum keeps the estimated capital alongside the due diligence questions, including clear height, permitted use, and the current certificate of occupancy.</p>
+<figure id="finance-shot" hidden><a href="private-screenshots/finance.png"><img data-preview="private-screenshots/finance.png" loading="lazy" alt="Helix Finance Lab inputs, opening costs, and a twelve-month runway chart"></a><figcaption>Actual Finance Lab interface · a separate indoor pickleball test run.</figcaption></figure></div>
+</section>
+<section class="shell split section">
+<p class="eyebrow">06 / Building at HackPrinceton</p>
+<div><h2>From a property browser to a decision workflow.</h2>
+<ol class="milestones"><li><strong>Start with a place.</strong> A Houston browser and the Tanner Road pilot connected sponsor listing data with a concrete reuse question.</li><li><strong>Put economics next to fit.</strong> Physical checks, location research, rent and cash modeling made it possible to compare uses on more than floor area.</li><li><strong>Connect the tools.</strong> The venture workstation let teammates enter from a budget, business or building. A scrolling story view surfaced the reasoning behind the verdict.</li><li><strong>Follow one space all the way through.</strong> The final Helix demo progressively built evidence around an exact listing and suite, then carried it through a business selection, financial analysis, and memorandum.</li></ol>
+<h3>My contribution</h3>
+<p>I brought the adaptive reuse idea to the project and implemented the final app’s intake and initial discovery stages. My commits cover how the product gathers a market, budget, funding mode, and business preferences, and returns comparable listings with stable identifiers. That gave the rest of the team’s investigation a concrete space and a reproducible set of inputs. We showed the integrated Helix application at judging.</p>
+</div></section>
+<section class="shell split section">
+<p class="eyebrow">07 / What we kept</p>
+<div><h2>The most useful output was a better next question.</h2>
+<p>We preserved six investigation records, including an alternate candidate. Broadway has the saved chain through Finance Lab and the memorandum. A recorded integration check across Helix and the earlier playground had 411 passing Python tests and 10 skips. Those checks exercised software behavior against their inputs.</p>
+<p>A production system would need current and licensed data, better links between scans and suites, market-specific calibration, dependable failure recovery, and validation with operators. The hackathon prototype showed how far a small team could get by treating uncertainty as part of the product. The interesting question is still what the building could become. The useful answer includes what you would need to find out next.</p>
+<div class="closing"><a href="https://github.com/sm1else-bot/helix">Source repository ↗</a><p><a href="archive/">Engineering archive ↗</a><br><small>Complete technical history, implementation record, and preserved investigations.</small></p></div></div>
+</section>
+</main>
+</body>
+</html>
