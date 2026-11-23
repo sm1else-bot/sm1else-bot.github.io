@@ -20,7 +20,7 @@
 .annotation-shape{fill:none;stroke:var(--acid);stroke-width:2;filter:drop-shadow(0 1px 2px #19201abb);vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0;animation:trace .85s cubic-bezier(.22,.8,.2,1) both}
 .annotation-leader{fill:none;stroke:var(--acid);stroke-width:1.3;filter:drop-shadow(0 1px 1px #19201a);stroke-dasharray:1;animation:trace .8s cubic-bezier(.22,.8,.2,1) both}
 .annotation-label{position:absolute;background:var(--acid);color:var(--ink);padding:8px 11px;max-width:180px;font-size:12px;line-height:1.3;font-weight:600;box-shadow:0 2px 8px #19201a20;animation:label-in .65s cubic-bezier(.16,1,.3,1) both}
-.annotation-label b{font-size:10px;display:block;font-weight:450;margin-bottom:3px}
+.annotation-label strong{font-weight:600}.annotation-label .annotation-detail{font-size:10px;display:block;font-weight:450;margin-top:3px}
 @keyframes trace{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes label-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .engine-slot,.decision-sheet{position:absolute;inset:0;background:var(--paper);padding:22px 25px 38px;overflow:auto}
@@ -46,7 +46,7 @@
  .title-row{grid-template-columns:minmax(0,1fr) 60px;gap:20px 10px}.title-row h1{font-size:22vw;white-space:nowrap}.title-period{letter-spacing:0}
  .title-margin p{display:block;font-size:14px;max-width:33ch;margin:14px 0 0}.title-aside{font-size:10px}
  .artifact-tabs{overflow-x:auto;gap:14px;padding:3px 1px 6px;scrollbar-width:thin}.artifact-tabs button{flex:0 0 100px;padding:10px 0}
- .annotation-label{font-size:10px;max-width:145px;padding:6px 8px}.annotation-label b{font-size:9px;margin-bottom:2px}
+ .annotation-label{font-size:10px;max-width:145px;padding:6px 8px}.annotation-label .annotation-detail{font-size:9px;margin-top:2px}
  .decision-sheet{padding:17px 16px 30px}.decision-kicker{font-size:9px}.decision-sheet h3{font-size:34px;margin:16px 0 5px}.decision-business{font-size:14px;margin-bottom:12px}
  .decision-ledger{gap:8px;padding:10px 0}.decision-ledger span{font-size:10px}.decision-ledger strong{font-size:19px}.decision-condition{font-size:11px;margin-top:10px}
  .engine-slot{padding:20px}.engine-title{font-size:48px}

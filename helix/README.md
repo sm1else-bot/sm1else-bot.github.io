@@ -171,3 +171,17 @@ checking no document horizontal overflow or nested scrolling in the text panels.
 Successive transition screenshots verify moving evidence marks. Source-to-exterior
 image continuity, keyboard navigation, reduced motion and absence of runtime errors
 were also checked.
+
+
+## Annotation hierarchy refinement
+
+Every annotation now leads with the visible finding, followed by its smaller
+verification note. The exterior uses Building footprint / Suite allocation unknown.
+Its former rectangular boundary is replaced by a hand-traced polygon following
+the visible roof perimeter and its setbacks in the saved aerial. This is an image
+annotation, not surveyed geometry or a statement of lease boundaries.
+Interior labels are Existing partition / Structural status unknown;
+Interior corridor / Clearance not measured; and
+Visible power outlets / Electrical capacity unknown.
+The distinction between identifying a partition and establishing its structural
+role is retained.

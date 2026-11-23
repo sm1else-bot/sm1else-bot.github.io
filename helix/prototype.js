@@ -11,15 +11,15 @@ const records = {
  annotations:[
   {kind:'box',box:[50,20,1200,132],point:[640,88],label:[.04,.05],text:'Marked parking',detail:'Visible in the aerial'},
   {kind:'ellipse',box:[360,405,630,140],point:[680,480],label:[.53,.72],text:'Paved service area',detail:'Vehicle access visible'},
-  {kind:'box',box:[85,160,1130,240],point:[930,270],label:[.59,.31],text:'Building-level image',detail:'Suite boundary unresolved'}
+  {kind:'polygon',points:[[74,231],[525,195],[529,222],[727,208],[727,177],[1179,143],[1197,372],[86,455],[73,305],[69,306]],point:[930,270],label:[.59,.31],text:'Building footprint',detail:'Suite allocation unknown'}
  ]},
  interior:{src:'assets/hardy-interior.webp',original:'assets/spatial.jpg',
  type:'Investigation / Matterport interior',caption:'Saved Matterport view. Existing partitions, a corridor and outlets are visible. Clear height and structural function are unverified; scan-to-suite coverage is unresolved.',
  alt:'Cropped Hardy Road Matterport interior showing a corridor, existing partition walls, windows and electrical outlets, with source-linked annotations.',
  annotations:[
-  {kind:'box',box:[280,20,650,520],point:[610,250],label:[.49,.09],text:'Existing partition',detail:'Structural role unverified'},
-  {kind:'ellipse',box:[20,90,290,510],point:[170,360],label:[.04,.64],text:'Interior corridor',detail:'Access width unmeasured'},
-  {kind:'ellipse',box:[700,395,190,140],point:[790,460],label:[.61,.68],text:'Electrical outlets',detail:'Capacity not established'}
+  {kind:'box',box:[280,20,650,520],point:[610,250],label:[.49,.09],text:'Existing partition',detail:'Structural status unknown'},
+  {kind:'ellipse',box:[20,90,290,510],point:[170,360],label:[.04,.64],text:'Interior corridor',detail:'Clearance not measured'},
+  {kind:'ellipse',box:[700,395,190,140],point:[790,460],label:[.61,.68],text:'Visible power outlets',detail:'Electrical capacity unknown'}
  ]},
  engine:{original:'https://github.com/sm1else-bot/helix/tree/main/project%20helix/stage3_engine',
  type:'Screening / deterministic engine',caption:'26 registered uses are evaluated against building fit, affordability and compliance. Your engine animation will occupy this stage.',
@@ -56,15 +56,22 @@ function drawAnnotations(animate=false) {
  const scale=Math.max(w/image.naturalWidth,h/image.naturalHeight);
  const ox=(w-image.naturalWidth*scale)/2,oy=(h-image.naturalHeight*scale)/2;
  for(const [i,finding] of findings.entries()) {
-  const [x,y,bw,bh]=finding.box;
-  const shape=finding.kind==='ellipse'
-   ?svgNode('ellipse',{cx:ox+(x+bw/2)*scale,cy:oy+(y+bh/2)*scale,rx:bw*scale/2,ry:bh*scale/2})
-   :svgNode('rect',{x:ox+x*scale,y:oy+y*scale,width:bw*scale,height:bh*scale,rx:3});
+  let shape;
+  if(finding.kind==='polygon') {
+   const points=finding.points.map(([x,y])=>(ox+x*scale)+','+(oy+y*scale)).join(' ');
+   shape=svgNode('polygon',{points});
+  } else {
+   const [x,y,bw,bh]=finding.box;
+   shape=finding.kind==='ellipse'
+    ?svgNode('ellipse',{cx:ox+(x+bw/2)*scale,cy:oy+(y+bh/2)*scale,rx:bw*scale/2,ry:bh*scale/2})
+    :svgNode('rect',{x:ox+x*scale,y:oy+y*scale,width:bw*scale,height:bh*scale,rx:3});
+  }
   shape.setAttribute('pathLength','1');shape.setAttribute('class','annotation-shape');
   shape.style.animationDelay=(i*130)+'ms';
   const label=document.createElement('div');label.className='annotation-label';label.setAttribute('role','listitem');
-  const detail=document.createElement('b');detail.textContent=finding.detail;
-  label.append(detail,document.createTextNode(finding.text));labels.append(label);
+  const heading=document.createElement('strong');heading.textContent=finding.text;
+  const detail=document.createElement('small');detail.className='annotation-detail';detail.textContent=finding.detail;
+  label.append(heading,detail);labels.append(label);
   // Label placements use screen space; source coordinates remain projected underneath.
   const lx=Math.max(8,Math.min(w-label.offsetWidth-8,w*finding.label[0]));
   const ly=Math.max(8,Math.min(h-label.offsetHeight-8,h*finding.label[1]));
