@@ -1,6 +1,6 @@
 # Helix exhibition — first-viewport prototype
 
-Scope: only the opening viewport and its saved-artifact selector are implemented.
+Scope: only the opening viewport and its five-stage artifact selector are implemented.
 The existing case study is preserved byte-for-byte under ../helix_old/.
 No engineering or collaboration page has been implemented. Their compositions below
 are proposals for review, not claims of working navigation.
@@ -16,8 +16,10 @@ and a separate ownership column. Black rules organize the surface. Acid yellow
 marks the project identifier and the selected property's source stamp.
 Imagery: actual saved interface captures and an explicitly labeled crop of the
 Vexcel image visible in the source-evidence screenshot. No invented UI or geometry.
-Interaction: keyboard-accessible Source / Investigation / Decision tabs change
-the actual artifact and its caption. A short image transition supports the change.
+Interaction: keyboard-accessible Source / Investigation / Inside / Engine / Decision tabs
+change the artifact and its caption. Exterior and interior findings are animated
+annotations over the corresponding saved source image. The engine visual is pending;
+the decision is retypeset from its saved memorandum. A short image transition supports the change.
 The main title and artifact enter once. Reduced-motion preferences disable motion.
 Hierarchy: project identity, visible engineering material, purpose, then authorship.
 Future Engineering composition: a broad annotated architecture atlas with selectable
@@ -106,7 +108,7 @@ No full Slack transcript or credentials are bundled with this prototype.
 
 ## Image provenance and boundaries
 
-All displayed captures concern 15603 W Hardy Rd, Houston (CoStar property 236138).
+All displayed imagery and decision records concern 15603 W Hardy Rd, Houston (CoStar property 236138).
 The prototype does not mix in the South Broadway modeled financial results.
 
 - assets/hardy-aerial.webp: crop (88,217)-(674,1520) of the preserved
@@ -127,3 +129,45 @@ or live-investigation claim is introduced.
 Run python -m http.server 8775 --bind 127.0.0.1 from the project collection root.
 Open http://127.0.0.1:8775/helix/.
 Build the public distribution using python tools/build_site.py.
+
+## Reviewed viewport revision
+
+The masthead now reads jessenth.com / Selected Engineering and
+built at Princeton, 13-15th Nov, 2026. The margin label is Adaptive Reuse.
+The introductory text uses the owner's exact requested wording:
+Got money? Don't know what to do with it? Try Helix
+HELIX now has substantially looser tracking and disabled font kerning to keep
+the L and I distinct.
+
+The exterior scene reuses hardy-aerial.webp without changing the image position
+when Source becomes Investigation. SVG outlines, circles and leader lines are
+projected from source-image coordinates into the centered cover crop. HTML labels
+remain legible at each viewport width. A ResizeObserver reprojects annotations when
+the image area changes. Shapes trace in over 850ms, staggered by 130ms, with eased
+label entrances. No continuous animation runs. Reduced motion reveals marks directly.
+
+New hardy-interior.webp is the image-only crop (150,0)-(1644,1062) of spatial.jpg.
+The interior's corridor, existing partition and electrical outlets are visible in
+that saved frame. The saved observations record supports these categories.
+No ceiling-height measurement, structural conclusion, furnishing claim or physical
+rejection count has been invented. The caption retains the unresolved scan-to-suite
+coverage issue.
+
+Decision is now an HTML exhibit transcribed from memorandum.jpg:
+- veterinary clinic, proceed to diligence;
+- base cash to open $406,940;
+- $50,000 reserve;
+- $443,060 modeled headroom against the saved $900,000 cash budget;
+- 10 of 26 businesses clearing all gates, with six diligence items still open.
+These are recorded scenario outputs, not a fresh model execution. The original
+memo screenshot remains linked from the scene.
+
+The Engine stage is intentionally a visual slot pending the owner's animation.
+Its copy describes the existing registry and three gate families without inventing
+a 3D rendering or implying a running screening process.
+
+Browser verification covered all five scenes at 1440, 1366, 1024, 768, 390 and 320px,
+checking no document horizontal overflow or nested scrolling in the text panels.
+Successive transition screenshots verify moving evidence marks. Source-to-exterior
+image continuity, keyboard navigation, reduced motion and absence of runtime errors
+were also checked.

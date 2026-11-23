@@ -12,15 +12,15 @@
 <body>
 <a class="skip" href="#exhibit">Skip to exhibit</a>
 <header class="masthead">
-<a href="../" class="signature">Jessenth Ebenezer<span>Selected engineering</span></a>
-<span class="edition">HackPrinceton / 13—15 Nov 2026</span>
+<a href="https://jessenth.com" class="signature">jessenth.com<span>Selected Engineering</span></a>
+<span class="edition">built at Princeton, 13-15th Nov, 2026</span>
 <a class="source-link" href="https://github.com/sm1else-bot/helix">Project source <span aria-hidden="true">＋</span></a>
 </header>
 <main id="exhibit">
 <section class="exhibition" aria-labelledby="project-title">
 <div class="title-row">
-<div class="title-margin"><span class="section-label">The reuse investigation</span><p>Commercial space.<br>Physical evidence.<br>A decision you can inspect.</p><span class="small-cross" aria-hidden="true">＋</span></div>
-<h1 id="project-title">HELIX<span class="title-period" aria-hidden="true">.</span></h1>
+<div class="title-margin"><span class="section-label">Adaptive Reuse</span><p>Got money? Don't know what to do with it? Try Helix</p><span class="small-cross" aria-hidden="true">＋</span></div>
+<h1 id="project-title"><span class="wordmark">HELIX</span><span class="title-period" aria-hidden="true">.</span></h1>
 <div class="title-aside"><span class="exhibition-mark" aria-hidden="true">H<br>↳</span><span>Built by three.<br>Over one weekend.</span></div>
 </div>
 <div class="exhibit-grid">
@@ -28,7 +28,9 @@
 <p class="section-label">On the table</p>
 <div class="artifact-tabs" role="tablist" aria-label="Inspect the saved investigation" aria-orientation="vertical">
 <button id="tab-source" type="button" role="tab" aria-selected="true" aria-controls="artifact-panel" data-artifact="source"><span>Source</span><small>Exterior imagery</small><span class="tab-symbol" aria-hidden="true">＋</span></button>
-<button id="tab-findings" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="findings"><span>Investigation</span><small>Grounded observations</small><span class="tab-symbol" aria-hidden="true">＋</span></button>
+<button id="tab-findings" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="findings"><span>Investigation</span><small>Read the exterior</small><span class="tab-symbol" aria-hidden="true">＋</span></button>
+<button id="tab-interior" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="interior"><span>Inside</span><small>Matterport evidence</small><span class="tab-symbol" aria-hidden="true">＋</span></button>
+<button id="tab-engine" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="engine"><span>The engine</span><small>Deterministic screening</small><span class="tab-symbol" aria-hidden="true">＋</span></button>
 <button id="tab-decision" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="decision"><span>Decision</span><small>Saved memorandum</small><span class="tab-symbol" aria-hidden="true">＋</span></button>
 </div>
 <a class="archive-link" href="../helix_old/archive/">Preserved archive <span aria-hidden="true">＋</span></a>
@@ -39,10 +41,31 @@
 <a id="artifact-open" href="../helix_old/screenshots/source-evidence.jpg" target="_blank" rel="noopener" aria-label="Open original source-evidence screenshot">
 <img id="artifact-image" src="assets/hardy-aerial.webp" alt="Aerial view of the Hardy Road building and its paved loading areas, cropped from the saved Vexcel source-evidence screenshot." width="1303" height="586">
 </a>
-<div class="artifact-stamp" aria-hidden="true"><span>Saved evidence</span><b>236138</b><span>CoStar property ID</span></div>
-<span class="image-instruction">Open original capture ＋</span>
+<div id="annotation-layer" class="annotation-layer" hidden>
+<svg id="annotation-lines" aria-hidden="true"></svg>
+<div id="annotation-labels" role="list" aria-label="Visible image findings"></div>
 </div>
-<figcaption><span id="artifact-caption">15603 W Hardy Rd · Exterior imagery from the saved investigation. Crop rotated 90°; source credit retained.</span><span class="capture-mark">Actual capture</span></figcaption>
+<div class="engine-slot" id="engine-slot" hidden>
+<span class="section-label">Deterministic screening</span>
+<p class="engine-title">26 uses.<br>Three gates.</p>
+<p class="engine-gates">Building fit / Budget / Compliance</p>
+<div class="engine-asset"><span>Engine visual</span><p>Animation to follow.</p></div>
+</div>
+<div class="decision-sheet" id="decision-sheet" hidden>
+<div class="decision-kicker"><span>Saved decision / Hardy Road</span><span>15 Nov 2026</span></div>
+<h3>Proceed to<br> diligence.</h3>
+<p class="decision-business">Veterinary clinic</p>
+<div class="decision-ledger">
+<p><span>Base cash to open</span><strong>$406,940</strong></p>
+<p><span>Reserve held</span><strong>$50,000</strong></p>
+<p><span>Modeled headroom</span><strong>$443,060</strong></p>
+</div>
+<p class="decision-condition"><strong>10 of 26 uses cleared all gates.</strong> Six diligence items remain open. Saved screening &amp; cash-runway result; not a profitability forecast.</p>
+</div>
+<div class="artifact-stamp" aria-hidden="true"><span>Saved evidence</span><b>236138</b><span>CoStar property ID</span></div>
+<a id="original-capture" class="image-instruction" href="../helix_old/screenshots/source-evidence.jpg" target="_blank" rel="noopener">Open original capture ＋</a>
+</div>
+<figcaption><span id="artifact-caption">15603 W Hardy Rd · Exterior imagery from the saved investigation. Crop rotated 90°; source credit retained.</span><span class="capture-mark" id="capture-mark">Actual capture</span></figcaption>
 </figure>
 <aside class="editorial">
 <p class="section-label">Hackathon → working system</p>
@@ -58,7 +81,7 @@
 </div>
 <div class="exhibition-footer">
 <p><span class="footer-label">The product</span><span>Listing → investigation → screening → finance</span></p>
-<details class="scope-note"><summary>About this study <span aria-hidden="true">＋</span></summary><div><b>First viewport only.</b> Engineering and Collaboration are separate experiences planned for the next phase. These are saved interface captures, not a running backend. The selected artifacts all concern Hardy Road; no Broadway financial results are mixed into this view. <a href="../helix_old/">Open the previous case study.</a></div></details>
+<details class="scope-note"><summary>About this study <span aria-hidden="true">＋</span></summary><div><b>First viewport only.</b> Engineering and Collaboration are separate experiences planned for the next phase. These are saved source images, source-linked annotations and a retypeset saved decision, not a running backend. The engine animation is pending. The selected artifacts all concern Hardy Road; no Broadway financial results are mixed into this view. <a href="../helix_old/">Open the previous case study.</a></div></details>
 <span class="prototype-label">Composition study / local prototype</span>
 </div>
 </section>
