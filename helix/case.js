@@ -1,42 +1,29 @@
 'use strict';
 const steps = {
-  listing: ['Start with the advertised space', 'The CoStar listing described a 7,205-square-foot industrial space. The advertised area and a $900,000 modeled budget gave us a starting point for investigation.', 'investigation.png', 'South Broadway · selected property'],
-  finance: ['Model the cost to open', 'For auto repair, the saved run used the recorded lease and build-out assumptions, a $900,000 budget, and a zero-dollar reserve. The base case estimated $530,432 to open, with a twelve-month no-revenue cash view.', 'finance.png', 'Finance Lab · separate indoor pickleball test run illustrating the interface'],
-
-  space: ['Investigate the selected space', 'Helix fixed the investigation to a 7,205-square-foot advertised space. Exterior evidence, recorded dimensions, and unresolved site questions followed that selection into screening.', 'investigation.png', 'South Broadway · building investigation'],
-  uses: ['Screen 26 business uses', 'Auto repair, gym / fitness studio, and martial arts / boxing cleared the saved gates. Each shortlisted use carried conditions to check before committing capital.', 'screening.png', 'South Broadway · feasibility screening'],
-  memo: ['Proceed to diligence on auto repair', 'The model estimated $530,432 to open. The decision still called for verifying usable clear height, permitted use, and the certificate of occupancy.', 'screening.png', 'South Broadway · the shortlist behind the decision'],
+  discovery: ['Helix discovery result for the Hardy Road flex space', 'Compare asking rent, suite area, and listing verification before investigating the space.'],
+  spatial: ['Interior scan and exterior aerial views', 'The building investigation brings interior and exterior views together.'],
+  observations: ['Findings on access, layout, parking, and visible utilities', 'The interface distinguishes visible features from questions that need verification.'],
+  'source-evidence': ['Aerial image behind the loading-area observation', 'Inspect the original evidence behind a loading-area finding.'],
+  screening: ['Veterinary clinic screening card with cost scenarios', 'Compare opening costs and inspect the conditions that still govern feasibility.'],
+  finance: ['Finance Lab capital model and cost ledger', 'Carry the selected use into a capital model and inspect its itemized costs.'],
+  memorandum: ['Hardy Road veterinary clinic investment memorandum', 'Review the conditional decision, estimated opening costs, and remaining diligence checks.'],
 };
 const pick = id => document.getElementById(id);
 const local = ['127.0.0.1','localhost','[::1]'].includes(location.hostname);
-function showStep(name) {
-  const [heading, copy, image, caption] = steps[name];
-  const title = document.createElement('h3');
-  const paragraph = document.createElement('p');
-  title.textContent = heading;
-  paragraph.textContent = copy;
-  pick('walk-text').replaceChildren(title, paragraph);
-  for (const button of document.querySelectorAll('[data-step]')) {
-    button.setAttribute('aria-pressed', String(button.dataset.step === name));
-  }
-  if (local) {
-    const url = 'private-screenshots/' + image;
-    const probe = new Image();
-    probe.onload = () => {
-      if (document.querySelector('[data-step][aria-pressed=true]').dataset.step !== name) return;
-      pick('walk-link').href = url;
-      pick('walk-image').src = url;
-      pick('walk-image').alt = caption;
-      pick('walk-caption').textContent = caption;
-    };
-    probe.src = url;
-  }
-}
-for (const button of document.querySelectorAll('[data-step]')) {
-  button.addEventListener('click', () => showStep(button.dataset.step));
+const buttons = document.querySelectorAll('[data-step]');
+for (const button of buttons) {
+  button.addEventListener('click', () => {
+    const step = button.dataset.step;
+    const [alt, caption] = steps[step];
+    const url = 'screenshots/' + step + '.jpg';
+    pick('walk-image').src = url;
+    pick('walk-image').alt = alt;
+    pick('walk-link').href = url;
+    pick('walk-caption').textContent = caption;
+    for (const option of buttons) option.setAttribute('aria-pressed', String(option === button));
+  });
 }
 if (local) {
-  showStep('space');
   const hero = new Image();
   hero.onload = () => {
     pick('hero-image').removeAttribute('width');
