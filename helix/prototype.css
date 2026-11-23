@@ -24,7 +24,7 @@
 @keyframes trace{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes label-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .engine-slot,.decision-sheet{position:absolute;inset:0;background:var(--paper);padding:22px 25px 38px;overflow:auto}
-.engine-slot{background:var(--acid);display:flex;flex-direction:column;justify-content:center}
+.engine-slot{background:#e9e7df;display:flex;flex-direction:column;justify-content:center}
 .engine-title{font-size:clamp(38px,4.8vw,72px);line-height:.95;font-weight:650;letter-spacing:-.055em;margin:20px 0}
 .engine-gates{font-size:13px;line-height:1.4;margin:0 0 20px}
 .engine-asset{border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:16px;padding-top:14px;font-size:12px}
@@ -38,7 +38,7 @@
 .decision-ledger strong{font-size:clamp(17px,2vw,28px);letter-spacing:-.03em;font-weight:550}
 .decision-condition{font-size:12px;line-height:1.45;margin:13px 0 0;max-width:60ch}
 .decision-condition strong{display:block;margin-bottom:2px;font-weight:650}
-.artifact-window[data-view=decision] .image-instruction,.artifact-window[data-view=engine] .image-instruction{bottom:8px;background:transparent;font-size:10px;padding:2px 5px}
+.artifact-window[data-view=decision] .image-instruction{bottom:8px;background:transparent;font-size:10px;padding:2px 5px}
 @media(max-height:800px) and (min-width:1000px){.decision-sheet{padding:14px 18px 25px}.decision-sheet h3{font-size:34px;margin:12px 0 5px}.decision-business{font-size:14px;margin-bottom:10px}.decision-ledger{padding:9px 0}.decision-ledger strong{font-size:22px}.decision-condition{font-size:11px;margin-top:9px}.engine-title{font-size:50px;margin:14px 0}}
 @media(max-width:1050px){.title-row{grid-template-columns:150px minmax(0,1fr) 70px}.title-row h1{font-size:15.5vw}}
 @media(max-width:650px){
@@ -56,3 +56,9 @@
 .artifact-window[data-view=finance]{background:#e5e7de}
 .artifact-window[data-view=finance] img{background:#e5e7de}
 @media(min-width:651px){.artifact-tabs button{padding-top:10px;padding-bottom:10px}.artifact-tabs .tab-symbol{top:10px}}
+
+/* Dedicated presentation player: the full scene, with orbit and zoom only. */
+#engine-slot{padding:0;overflow:hidden}
+#engine-player{display:block;width:100%;height:100%;border:0}
+.artifact-window[data-view=engine] .image-instruction{bottom:12px;right:12px;padding:9px 12px;background:var(--paper);border:1px solid var(--ink);font-size:11px;text-decoration:none}
+.artifact-window[data-view=engine] .image-instruction:hover{background:var(--acid)}

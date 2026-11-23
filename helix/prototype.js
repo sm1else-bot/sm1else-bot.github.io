@@ -21,9 +21,9 @@ const records = {
   {kind:'ellipse',box:[20,90,290,510],point:[170,360],label:[.04,.64],text:'Interior corridor',detail:'Clearance not measured'},
   {kind:'ellipse',box:[700,395,190,140],point:[790,460],label:[.61,.68],text:'Visible power outlets',detail:'Electrical capacity unknown'}
  ]},
- engine:{original:'https://github.com/sm1else-bot/helix/tree/main/project%20helix/stage3_engine',
- type:'Screening / deterministic engine',caption:'26 registered uses are evaluated against building fit, affordability and compliance. Your engine animation will occupy this stage.',
- mark:'Visual pending'},
+ engine:{original:'https://projects.jessenth.com/Helix-Viz/',
+ type:'Screening / deterministic engine',caption:'26 uses · building fit, affordability, compliance. Illustrative default inputs, actual engine rules. 8× loop; drag to orbit and scroll to zoom.',
+ mark:'Illustrative fixture'},
  finance:{src:'assets/hardy-finance.webp',fit:'contain',original:'../helix_old/screenshots/finance.jpg',
  type:'Finance Lab / saved cost model',caption:'Hardy Road · Veterinary clinic. $406,940 to open + $50,000 reserve = $456,940 required, leaving $443,060 from a $900,000 budget. Build-out uses a typical-unit benchmark, not a suite-specific quote.',
  alt:'Cropped actual Finance Lab screenshot showing Hardy Road capital requirements and the sourced startup cost ledger.',
@@ -113,12 +113,16 @@ async function select(tab) {
  image.style.objectFit=record.fit||'cover';
  imageLink.hidden=!record.src;
  document.querySelector('#engine-slot').hidden=key!=='engine';
+ const enginePlayer=document.querySelector('#engine-player');
+ if(key==='engine'){
+  if(!enginePlayer.hasAttribute('src'))enginePlayer.src=enginePlayer.dataset.src;
+ }else enginePlayer.removeAttribute('src');
  document.querySelector('#decision-sheet').hidden=key!=='decision';
  layer.hidden=!record.annotations;
  imageLink.href=record.original;
  imageLink.setAttribute('aria-label','Open original '+key+' capture');
  document.querySelector('#original-capture').href=record.original;
- document.querySelector('#original-capture').textContent=key==='engine'?'Inspect engine source ＋':'Open original capture ＋';
+ document.querySelector('#original-capture').textContent=key==='engine'?'Explore Helix-Viz ＋':'Open original capture ＋';
  document.querySelector('#artifact-type').textContent=record.type;
  document.querySelector('#artifact-caption').textContent=record.caption;
  document.querySelector('#capture-mark').textContent=record.mark||'Saved evidence';
