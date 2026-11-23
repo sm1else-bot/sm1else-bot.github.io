@@ -22,4 +22,9 @@ helix.mkdir(exist_ok=True)
 for name in ("index.html", "case.css", "case.js", "archive/index.html", "style.css", "archive.js", "intake.jpg"):
     (helix / name).parent.mkdir(exist_ok=True)
     shutil.copyfile(ROOT / "helix" / name, helix / name)
+screenshots = helix / "screenshots"
+screenshots.mkdir(exist_ok=True)
+for stem in ("discovery", "spatial", "observations", "source-evidence", "screening", "finance", "memorandum"):
+    name = f"{stem}.jpg"
+    shutil.copyfile(ROOT / "helix" / "screenshots" / name, screenshots / name)
 print("Built _site with content-versioned assets")
