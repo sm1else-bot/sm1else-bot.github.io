@@ -28,7 +28,8 @@ for name in ("prototype.css", "prototype.js"):
 prototype.write_text(html, encoding="utf-8")
 story_page = SITE / "slackologics" / "index.html"
 story_html = story_page.read_text(encoding="utf-8")
-version = hashlib.sha256((ROOT / "slackologics" / "story.css").read_bytes()).hexdigest()[:12]
-story_html = story_html.replace('href="story.css"', 'href="story.css?v=' + version + '"')
+for name in ("story.css", "workflow.js"):
+    version = hashlib.sha256((ROOT / "slackologics" / name).read_bytes()).hexdigest()[:12]
+    story_html = story_html.replace(name + '"', name + "?v=" + version + '"')
 story_page.write_text(story_html, encoding="utf-8")
 print("Built _site with content-versioned assets")
