@@ -52,3 +52,7 @@
  .engine-slot{padding:20px}.engine-title{font-size:48px}
 }
 @media(prefers-reduced-motion:reduce){.annotation-shape,.annotation-leader,.annotation-label{animation:none!important}}
+
+.artifact-window[data-view=finance]{background:#e5e7de}
+.artifact-window[data-view=finance] img{background:#e5e7de}
+@media(min-width:651px){.artifact-tabs button{padding-top:10px;padding-bottom:10px}.artifact-tabs .tab-symbol{top:10px}}

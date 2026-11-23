@@ -1,6 +1,6 @@
 # Helix exhibition — first-viewport prototype
 
-Scope: only the opening viewport and its five-stage artifact selector are implemented.
+Scope: only the opening viewport and its six-stage artifact selector are implemented.
 The existing case study is preserved byte-for-byte under ../helix_old/.
 No engineering or collaboration page has been implemented. Their compositions below
 are proposals for review, not claims of working navigation.
@@ -16,7 +16,7 @@ and a separate ownership column. Black rules organize the surface. Acid yellow
 marks the project identifier and the selected property's source stamp.
 Imagery: actual saved interface captures and an explicitly labeled crop of the
 Vexcel image visible in the source-evidence screenshot. No invented UI or geometry.
-Interaction: keyboard-accessible Source / Investigation / Inside / Engine / Decision tabs
+Interaction: keyboard-accessible Source / Investigation / Inside / Engine / Finance Lab / Decision tabs
 change the artifact and its caption. Exterior and interior findings are animated
 annotations over the corresponding saved source image. The engine visual is pending;
 the decision is retypeset from its saved memorandum. A short image transition supports the change.
@@ -185,3 +185,26 @@ Interior corridor / Clearance not measured; and
 Visible power outlets / Electrical capacity unknown.
 The distinction between identifying a partition and establishing its structural
 role is retained.
+
+
+## Finance Lab exhibit
+
+Finance Lab is placed after the deterministic engine and before Decision.
+hardy-finance.webp is an image-only crop (780,0)-(2795,866) of the original
+helix_old/screenshots/finance.jpg. The original screenshot remains linked.
+
+The screenshot identifies the same Hardy Road property, 5,941-SF selected space,
+listing 22141592, and veterinary-clinic scenario as the saved memorandum.
+Its visible numbers reconcile: $406,940 opening costs + $50,000 reserve =
+$456,940 required; $900,000 starting cash minus this requirement = $443,060
+headroom. No fresh financial run is implied.
+
+Animated callouts identify the base opening cost, the required amount including
+reserve, and the $152,250 base build-out benchmark. The latter explicitly retains
+the worksheet's limitation: its benchmark unit size is unknown, so it is not scaled
+to the selected suite. The full screenshot preserves low/base/high assumptions
+and source citations.
+
+The worksheet uses contain instead of cover so its numeric columns remain visible
+on narrow screens. Annotation geometry uses the same fit mode, keeping outlines
+and leader endpoints aligned with their evidence.

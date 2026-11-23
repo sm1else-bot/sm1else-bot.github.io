@@ -24,6 +24,14 @@ const records = {
  engine:{original:'https://github.com/sm1else-bot/helix/tree/main/project%20helix/stage3_engine',
  type:'Screening / deterministic engine',caption:'26 registered uses are evaluated against building fit, affordability and compliance. Your engine animation will occupy this stage.',
  mark:'Visual pending'},
+ finance:{src:'assets/hardy-finance.webp',fit:'contain',original:'../helix_old/screenshots/finance.jpg',
+ type:'Finance Lab / saved cost model',caption:'Hardy Road · Veterinary clinic. $406,940 to open + $50,000 reserve = $456,940 required, leaving $443,060 from a $900,000 budget. Build-out uses a typical-unit benchmark, not a suite-specific quote.',
+ alt:'Cropped actual Finance Lab screenshot showing Hardy Road capital requirements and the sourced startup cost ledger.',
+ annotations:[
+  {kind:'box',box:[25,62,620,140],point:[180,152],label:[.025,.035],text:'Cash to open',detail:'$406,940 · base case'},
+  {kind:'box',box:[1330,62,635,140],point:[1460,152],label:[.66,.035],text:'Including reserve',detail:'$456,940 required'},
+  {kind:'box',box:[25,645,1945,107],point:[1200,700],label:[.39,.81],mobileLabel:[.025,.78],text:'Build-out benchmark',detail:'$152,250 base · not suite-scaled'}
+ ]},
  decision:{original:'assets/memorandum.jpg',
  type:'Decision / saved memorandum',caption:'Hardy Road · Retypeset from the saved veterinary-clinic memorandum. $900,000 cash budget; base-case costs and reserve shown. Open the original for the full record.',
  mark:'Saved result'}
@@ -52,8 +60,8 @@ function drawAnnotations(animate=false) {
  if(!findings || !image.naturalWidth)return;
  const w=stage.clientWidth,h=stage.clientHeight;
  svg.setAttribute('viewBox','0 0 '+w+' '+h);
- // Match object-fit: cover exactly, including the centered crop at each viewport size.
- const scale=Math.max(w/image.naturalWidth,h/image.naturalHeight);
+ // Match the image fit exactly: cover for photographs, contain for the finance worksheet.
+ const scale=(records[current].fit==='contain'?Math.min:Math.max)(w/image.naturalWidth,h/image.naturalHeight);
  const ox=(w-image.naturalWidth*scale)/2,oy=(h-image.naturalHeight*scale)/2;
  for(const [i,finding] of findings.entries()) {
   let shape;
@@ -73,8 +81,9 @@ function drawAnnotations(animate=false) {
   const detail=document.createElement('small');detail.className='annotation-detail';detail.textContent=finding.detail;
   label.append(heading,detail);labels.append(label);
   // Label placements use screen space; source coordinates remain projected underneath.
-  const lx=Math.max(8,Math.min(w-label.offsetWidth-8,w*finding.label[0]));
-  const ly=Math.max(8,Math.min(h-label.offsetHeight-8,h*finding.label[1]));
+  const placement=narrow.matches&&finding.mobileLabel?finding.mobileLabel:finding.label;
+  const lx=Math.max(8,Math.min(w-label.offsetWidth-8,w*placement[0]));
+  const ly=Math.max(8,Math.min(h-label.offsetHeight-8,h*placement[1]));
   label.style.left=lx+'px';label.style.top=ly+'px';label.style.animationDelay=(180+i*130)+'ms';
   const px=ox+finding.point[0]*scale,py=oy+finding.point[1]*scale;
   const endX=lx+label.offsetWidth/2,endY=ly+label.offsetHeight/2;
@@ -101,6 +110,7 @@ async function select(tab) {
  }
  if(turn!==generation)return;
  current=key;stage.dataset.view=key;
+ image.style.objectFit=record.fit||'cover';
  imageLink.hidden=!record.src;
  document.querySelector('#engine-slot').hidden=key!=='engine';
  document.querySelector('#decision-sheet').hidden=key!=='decision';
