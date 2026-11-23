@@ -16,6 +16,8 @@ const PROJECTS = [
   {id:'helix',name:'Helix',category:'Engineering case study',kind:'research',
     description:'From a HackPrinceton market scan to an evidence-led adaptive reuse and investment workstation.',
     tags:['Python','Property intelligence','Financial modeling'],
+    image:'helix/intake.jpg',imageAlt:'Helix intake and investigation stage navigation',
+
     website:'helix/',websiteLabel:'Read case study',source:'https://github.com/sm1else-bot/helix',
     note:'Covers the Suite and Flow prototypes, final application, and browser-local viewer for the private offline archive.'},
   {id:'mozhi',name:'Mozhi',category:'Programming language',kind:'language',
