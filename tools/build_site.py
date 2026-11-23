@@ -17,14 +17,13 @@ for name in ("styles.css", "projects.js", "app.js"):
 shutil.copyfile(ROOT / "favicon.svg", SITE / "favicon.svg")
 shutil.copytree(ROOT / "assets", SITE / "assets", dirs_exist_ok=True)
 shutil.copytree(ROOT / "trackback", SITE / "trackback", dirs_exist_ok=True)
-helix = SITE / "helix"
-helix.mkdir(exist_ok=True)
-for name in ("index.html", "case.css", "case.js", "archive/index.html", "style.css", "archive.js", "intake.jpg"):
-    (helix / name).parent.mkdir(exist_ok=True)
-    shutil.copyfile(ROOT / "helix" / name, helix / name)
-screenshots = helix / "screenshots"
-screenshots.mkdir(exist_ok=True)
-for stem in ("discovery", "spatial", "observations", "source-evidence", "screening", "finance", "memorandum"):
-    name = f"{stem}.jpg"
-    shutil.copyfile(ROOT / "helix" / "screenshots" / name, screenshots / name)
+for folder in ("helix", "helix_old"):
+    shutil.copytree(ROOT / folder, SITE / folder, dirs_exist_ok=True)
+# Version the new prototype assets while preserving the archived HTML.
+prototype = SITE / "helix" / "index.html"
+html = prototype.read_text(encoding="utf-8")
+for name in ("prototype.css", "prototype.js"):
+    version = hashlib.sha256((ROOT / "helix" / name).read_bytes()).hexdigest()[:12]
+    html = re.sub(re.escape(name) + r'(?:\?v=[a-z0-9]+)?', name + "?v=" + version, html)
+prototype.write_text(html, encoding="utf-8")
 print("Built _site with content-versioned assets")

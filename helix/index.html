@@ -1,103 +1,66 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Helix, an adaptive reuse intelligence platform built at HackPrinceton 2026.">
-<title>Helix — What could this building become?</title>
-<link rel="stylesheet" href="case.css?v=walkthrough">
-<script defer src="case.js?v=walkthrough"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Helix â€” The Evidence Table / Prototype</title>
+<meta name="description" content="A first-viewport study of Helix, the adaptive reuse intelligence platform built at HackPrinceton 2026.">
+<link rel="icon" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;450;500;550;600;650;700;750;800;850;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="prototype.css"><script src="prototype.js" defer></script>
 </head>
 <body>
-<header class="shell mast"><a href="../">Jessenth Ebenezer / Projects</a><a href="https://github.com/sm1else-bot/helix">Source ↗</a></header>
-<main>
-<section class="shell hero">
-<p class="eyebrow">Helix · HackPrinceton 2026</p>
-<h1>What could this building become?</h1>
-<p class="lede">Over one HackPrinceton weekend, our team of three built a commercial real estate intelligence system that combines spatial evidence, AI-assisted analysis, rules-based screening, and financial modeling.</p>
-<p class="hero-role"><strong>My role.</strong> I proposed the adaptive reuse idea and built across the investigation workflow, from property discovery and spatial evidence to screening, opportunity reporting, and Finance Lab.</p>
-<p class="meta"><a href="#screenshots">See Helix in action ↓</a></p>
-<dl class="overview">
-<div><dt>Event</dt><dd>HackPrinceton 2026</dd></div><div><dt>Team</dt><dd>Three people</dd></div><div><dt>Timeline</dt><dd>One hackathon weekend</dd></div>
-</dl>
-<details class="stack"><summary>Technology across the investigation</summary>
-<dl><div><dt>Application</dt><dd>Python HTTP server · JavaScript, HTML and CSS</dd></div><div><dt>Model inference</dt><dd>OpenRouter · NVIDIA Nemotron for discovery and tool execution · Qwen for vision · GPT-6.1 Sol for opportunity reports</dd></div><div><dt>Property and spatial evidence</dt><dd>CoStar, Vexcel and Matterport</dd></div><div><dt>Research and compliance</dt><dd>Tavily and Census geocoding</dd></div><div><dt>Finance</dt><dd>Python cash simulation and Capital One Nessie sandbox</dd></div></dl></details>
-<figure class="hero-shot"><a id="hero-link" href="intake.jpg"><img id="hero-image" src="intake.jpg" width="1280" height="850" alt="Helix intake and investigation stage navigation"></a><figcaption id="hero-caption">The final Helix application · investigation intake</figcaption></figure>
-</section>
-<section class="shell split section">
-<p class="eyebrow">01 / The idea</p>
-<div><h2>A building can outlive its first use.</h2>
-<p>I was struck by how much New York nightlife happens in buildings made for something else. A warehouse becomes a rave venue. News about vacant offices and conversions raised the same question at a much larger scale. I wanted to start with a building and investigate which uses could work there. That reverses the usual search: once you commit to a business idea, the listings you compare can only tell you where that idea might fit. Starting with the space lets you compare different businesses against the same physical and financial constraints.</p>
-<p>A promising listing and a manageable rent only get you so far. An operator still needs to know whether the ceiling clears the equipment, whether vehicles can get in, what the use requires locally, and how long the business can carry costs before opening. Each answer comes from a different kind of evidence. At HackPrinceton, we built one investigation that could carry those answers forward together.</p></div>
-</section>
-<section class="case-band" id="broadway">
-<div class="shell section">
-<p class="eyebrow">02 / The saved investigation</p>
-<h2>One building. 26 possible uses.</h2>
-<p class="lede">1250 S Broadway, Los Angeles. We followed a 7,205-square-foot industrial listing from discovery through a modeled investment decision.</p>
-<div class="metrics"><div><strong>26</strong><span>business uses screened</span></div><div><strong>3</strong><span>uses shortlisted</span></div><div><strong>$530,432</strong><span>modeled base cash to open</span></div></div>
-<div class="journey" aria-label="Investigation sequence"><span>Intake</span><span>Discovery</span><span>Building</span><span>Screening</span><span>Finance</span><span>Memorandum</span></div>
+<a class="skip" href="#exhibit">Skip to exhibit</a>
+<header class="masthead">
+<a href="../" class="signature">Jessenth Ebenezer<span>Selected engineering</span></a>
+<span class="edition">HackPrinceton / 13â€”15 Nov 2026</span>
+<a class="source-link" href="https://github.com/sm1else-bot/helix">Project source <span aria-hidden="true">ï¼‹</span></a>
+</header>
+<main id="exhibit">
+<section class="exhibition" aria-labelledby="project-title">
+<div class="title-row">
+<div class="title-margin"><span class="section-label">The reuse investigation</span><p>Commercial space.<br>Physical evidence.<br>A decision you can inspect.</p><span class="small-cross" aria-hidden="true">ï¼‹</span></div>
+<h1 id="project-title">HELIX<span class="title-period" aria-hidden="true">.</span></h1>
+<div class="title-aside"><span class="exhibition-mark" aria-hidden="true">H<br>â†³</span><span>Built by three.<br>Over one weekend.</span></div>
 </div>
-</section>
-<section class="shell section" id="screenshots">
-<p class="eyebrow">Product walkthrough · Houston</p>
-<h2>Inside a Helix investigation.</h2>
-<p class="lede">Follow a veterinary clinic scenario at 15603 W Hardy Road, a separate investigation from South Broadway.</p>
-<div class="choices capture-controls" aria-label="Walkthrough steps">
-<button type="button" data-step="discovery" aria-pressed="true">Discovery</button>
-<button type="button" data-step="spatial" aria-pressed="false">Spatial evidence</button>
-<button type="button" data-step="observations" aria-pressed="false">Observations</button>
-<button type="button" data-step="source-evidence" aria-pressed="false">Source inspection</button>
-<button type="button" data-step="screening" aria-pressed="false">Screening</button>
-<button type="button" data-step="finance" aria-pressed="false">Finance Lab</button>
-<button type="button" data-step="memorandum" aria-pressed="false">Memorandum</button>
+<div class="exhibit-grid">
+<div class="artifact-index">
+<p class="section-label">On the table</p>
+<div class="artifact-tabs" role="tablist" aria-label="Inspect the saved investigation" aria-orientation="vertical">
+<button id="tab-source" type="button" role="tab" aria-selected="true" aria-controls="artifact-panel" data-artifact="source"><span>Source</span><small>Exterior imagery</small><span class="tab-symbol" aria-hidden="true">ï¼‹</span></button>
+<button id="tab-findings" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="findings"><span>Investigation</span><small>Grounded observations</small><span class="tab-symbol" aria-hidden="true">ï¼‹</span></button>
+<button id="tab-decision" type="button" role="tab" aria-selected="false" aria-controls="artifact-panel" tabindex="-1" data-artifact="decision"><span>Decision</span><small>Saved memorandum</small><span class="tab-symbol" aria-hidden="true">ï¼‹</span></button>
 </div>
-<figure class="capture-panel">
-<a id="walk-link" href="screenshots/discovery.jpg"><img id="walk-image" src="screenshots/discovery.jpg" alt="Helix discovery result for the Hardy Road flex space"></a>
-<figcaption id="walk-caption" aria-live="polite">Compare asking rent, suite area, and listing verification before investigating the space.</figcaption>
+<a class="archive-link" href="../helix_old/archive/">Preserved archive <span aria-hidden="true">ï¼‹</span></a>
+</div>
+<figure class="artifact" id="artifact-panel" role="tabpanel" aria-labelledby="tab-source" tabindex="0">
+<div class="artifact-topline"><span id="artifact-type">Vexcel / exterior image</span><span>Houston, TX</span></div>
+<div class="artifact-window" data-view="source">
+<a id="artifact-open" href="../helix_old/screenshots/source-evidence.jpg" target="_blank" rel="noopener" aria-label="Open original source-evidence screenshot">
+<img id="artifact-image" src="assets/hardy-aerial.webp" alt="Aerial view of the Hardy Road building and its paved loading areas, cropped from the saved Vexcel source-evidence screenshot." width="1303" height="586">
+</a>
+<div class="artifact-stamp" aria-hidden="true"><span>Saved evidence</span><b>236138</b><span>CoStar property ID</span></div>
+<span class="image-instruction">Open original capture ï¼‹</span>
+</div>
+<figcaption><span id="artifact-caption">15603 W Hardy Rd Â· Exterior imagery from the saved investigation. Crop rotated 90Â°; source credit retained.</span><span class="capture-mark">Actual capture</span></figcaption>
 </figure>
-</section>
-<section class="shell split section">
-<p class="eyebrow">03 / Building intelligence</p>
-<div><h2>Each source answers a different question.</h2>
-<p>CoStar tells us what is being offered. Vexcel’s overhead and oblique views give context for the footprint, approaches, and exterior. Matterport brings the investigation inside, where scan coverage and available measurements can inform the next inspection. Vision models can point to visible features and tie an observation back to an image.</p>
-<p>The difficult part is deciding where that evidence applies. A scan can match the address while its relationship to the advertised suite remains unclear. A building-level height field leaves the suite’s usable clearance open. Helix carries those scope differences forward so an operator knows what to measure next.</p>
-<div id="aerial-controls" class="choices" hidden aria-label="South Broadway aerial views"></div>
-<figure id="aerial" hidden><a id="aerial-link"><img id="aerial-image" loading="lazy" alt="South Broadway aerial evidence"></a><figcaption id="aerial-caption"></figcaption></figure></div>
-</section>
-<section class="shell section">
-<p class="eyebrow">04 / Engineering judgment</p>
-<h2>Give the model evidence.<br>Give the decision rules.</h2>
-<p class="lede">I built the discovery and investigation handoff around an exact property, listing, and suite. Two sources can agree on the street address and still describe different spaces. Carrying those identifiers through the workflow let us test that connection before using the evidence.</p>
-<div class="diagram" role="group" aria-label="Helix architecture">
-<div><b>Source evidence</b><span>Listing records · imagery · research</span></div>
-<div><b>Reconcile identity</b><span>Property → listing → suite, with evidence references</span></div>
-<div class="fork"><div><b>Deterministic screening</b><span>Building fit · affordability · compliance</span></div><div><b>Model-assisted interpretation</b><span>Visible observations · explanation with evidence references</span></div></div>
-<div><b>Saved investigation</b><span>Shortlist → financial handoff → memorandum</span></div>
+<aside class="editorial">
+<p class="section-label">Hackathon â†’ working system</p>
+<h2>Start with<br> the building.</h2>
+<p class="standfirst">Helix investigates a commercial space, screens possible uses, and models the cost to open.</p>
+<div class="ownership">
+<h3>My part in the build</h3>
+<p>Idea, intake &amp; discovery, building investigation, screening integration, opportunity-report backend, and the initial Finance Lab adapter &amp; interface.</p>
+<p class="team-credit">With Asmit Datta &amp; Jayant Katiyar. Screening, compliance, and cash models were team-built.</p>
+<a href="https://github.com/sm1else-bot/helix/commit/9560469" class="evidence-link">Inspect my Stage 2 implementation <span aria-hidden="true">ï¼‹</span></a>
 </div>
-<div class="columns"><p>I integrated the team’s screening engine behind the investigation, with an adapter that checks the selected listing and suite before evaluation. Explicit building, cost, and compliance rules determine which uses advance. I built the opportunity report backend around that output, validating candidate order and evidence references so AI explanations stay tied to the screening.</p><p>The investigation records provider status, conflicting observations, and unresolved questions alongside evidence that did arrive. Saved discovery, dossier, and screening snapshots let us revisit the decision after sponsor access ended. On Broadway, restoring a missing jurisdiction cache changed which uses advanced. The preserved runs show where that input affected the result.</p></div>
-</section>
-<section class="shell split section">
-<p class="eyebrow">05 / Finance Lab</p>
-<div><h2>What does it take to open?</h2>
-<p>Auto repair was selected from the Broadway shortlist. The saved base case estimated <strong>$530,432</strong> to open against a <strong>$900,000</strong> budget. Its assumptions included a zero-dollar reserve and a twelve-month no-revenue cash view. These are modeled inputs and outputs from the saved investigation.</p>
-<div class="capital" role="img" aria-label="Of $900,000 modeled starting cash, $530,432 goes to opening capital and $369,568 remains after modeled opening costs"><div></div></div><p class="caption">$530,432 modeled opening capital · $369,568 modeled headroom</p>
-<p>Finance Lab brings lease terms, build-out, upfront capital, recurring expenses, opening delay, and proposed financing into the same model. Low, base, and high scenarios let an operator see which assumptions move the decision. The memorandum keeps the estimated capital alongside the due diligence questions, including clear height, permitted use, and the current certificate of occupancy.</p>
-<figure id="finance-shot" hidden><a href="private-screenshots/finance.png"><img data-preview="private-screenshots/finance.png" loading="lazy" alt="Helix Finance Lab inputs, opening costs, and a twelve-month runway chart"></a><figcaption>Actual Finance Lab interface · a separate indoor pickleball test run.</figcaption></figure></div>
-</section>
-<section class="shell split section">
-<p class="eyebrow">06 / Building at HackPrinceton</p>
-<div><h2>From a property browser to a decision workflow.</h2>
-<ol class="milestones"><li><strong>Start with a place.</strong> We started with a Houston address browser and the Tanner Road pilot. Testing one actual property exposed the difference between finding a listing and knowing what the building could support.</li><li><strong>Put economics next to fit.</strong> The physical checks and financial models answered different questions. We brought them together so that an attractive use could still be screened out by rent, build-out costs, or cash runway.</li><li><strong>Connect the tools.</strong> The venture workstation supported starting from a budget, business, or building. The scrolling story view showed us how much easier a verdict was to follow when visitors saw the evidence in the order it mattered.</li><li><strong>Follow one space all the way through.</strong> For the judging demo, we narrowed the workflow to one exact space. That gave the pieces a shared point of reference and made the transition from investigation to business selection and capital planning clear.</li></ol>
-<h3>My contribution</h3>
-<p>I brought the adaptive reuse idea to the project and built the intake and discovery experience end to end, including listing normalization, stable suite identities, and the verification handoff. I implemented the building investigation orchestrator, evidence contracts, spatial provider adapters, and the interface that displays findings as the investigation progresses. That work included integrating the team’s compliance logic, refining the physical profile, and getting Matterport tours to load in the investigation view.</p><p>I integrated the team’s deterministic screening engine and built the screening UI and opportunity report backend. I also built the Finance Lab adapter and initial interface around the team’s cost and cash models, and fixed multi-step Nemotron tool execution so a turn could finish after several tool calls. My work spanned the browser, data contracts, model calls, and the handoffs that let independently built components operate as one system. We showed the integrated application at judging.</p>
-</div></section>
-<section class="shell split section">
-<p class="eyebrow">07 / What we kept</p>
-<div><h2>A working investment workflow in one weekend.</h2>
-<p>We preserved six investigation records, including an alternate candidate. Broadway has the saved chain through Finance Lab and the memorandum. A recorded integration check across Helix and the earlier playground had 411 passing Python tests and 10 skips. Those checks exercised software behavior against their inputs.</p>
-<p>A production system would need dependable data access, better scan-to-suite coverage, and validation with operators across markets. In one weekend, we took an observation about New York nightlife and built a system that could investigate a commercial space, screen 26 uses, model the capital to open, and assemble an evidence-backed memorandum. Each claim in that decision could lead an operator back to a record, an assumption, or a specific question to resolve on site.</p>
-<div class="closing"><a href="https://github.com/sm1else-bot/helix">Source repository ↗</a><p><a href="archive/">Engineering archive ↗</a><br><small>Complete technical history, implementation record, and preserved investigations.</small></p></div></div>
+</aside>
+</div>
+<div class="exhibition-footer">
+<p><span class="footer-label">The product</span><span>Listing â†’ investigation â†’ screening â†’ finance</span></p>
+<details class="scope-note"><summary>About this study <span aria-hidden="true">ï¼‹</span></summary><div><b>First viewport only.</b> Engineering and Collaboration are separate experiences planned for the next phase. These are saved interface captures, not a running backend. The selected artifacts all concern Hardy Road; no Broadway financial results are mixed into this view. <a href="../helix_old/">Open the previous case study.</a></div></details>
+<span class="prototype-label">Composition study / local prototype</span>
+</div>
 </section>
 </main>
 </body>
