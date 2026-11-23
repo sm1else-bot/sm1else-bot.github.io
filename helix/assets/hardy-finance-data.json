@@ -1,0 +1,113 @@
+{
+  "budget": 900000,
+  "reserve": 50000,
+  "scenarios": {
+    "low": 222263,
+    "base": 406940,
+    "high": 591617
+  },
+  "lines": [
+    {
+      "id": "leasehold_improvements",
+      "label": "Build-out (leasehold improvements)",
+      "how": "as listed (benchmark unit size unknown, so not scaled to this space)",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 67500,
+      "high": 237000,
+      "base": 152250
+    },
+    {
+      "id": "equipment_ffe",
+      "label": "Equipment, furniture and fixtures",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 8000,
+      "high": 20000,
+      "base": 14000
+    },
+    {
+      "id": "signage",
+      "label": "Signage",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 13000,
+      "high": 24000,
+      "base": 18500
+    },
+    {
+      "id": "initial_inventory",
+      "label": "Opening inventory and supplies",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 12500,
+      "high": 25000,
+      "base": 18750
+    },
+    {
+      "id": "grand_opening_marketing",
+      "label": "Grand opening marketing",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 27000,
+      "high": 35000,
+      "base": 31000
+    },
+    {
+      "id": "deposits_licenses_permits",
+      "label": "Licenses, permits and utility deposits",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 1000,
+      "high": 4000,
+      "base": 2500
+    },
+    {
+      "id": "additional_funds_working_capital",
+      "label": "Early operating cash (first months)",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 25000,
+      "high": 50000,
+      "base": 37500
+    },
+    {
+      "id": "other_opening_costs",
+      "label": "Pre-opening payroll, insurance, legal and other",
+      "how": "as listed for a typical unit",
+      "source": "FranchisePayback (reproducing PetWellClinic FDD)",
+      "low": 57000,
+      "high": 175700,
+      "base": 116350
+    },
+    {
+      "id": "lease_deposit",
+      "label": "Lease security deposit",
+      "how": "2 months x $3,218 (assumption)",
+      "source": "team convention",
+      "low": 6436,
+      "base": 6436,
+      "high": 6436
+    },
+    {
+      "id": "rent_during_buildout",
+      "label": "Rent while you build out",
+      "how": "3 months x $3,218 (no free-rent period assumed)",
+      "source": "build months: assumption",
+      "low": 4827,
+      "base": 9654,
+      "high": 14481
+    }
+  ],
+  "provenance": {
+    "capture": "../helix_old/screenshots/finance.jpg",
+    "source_commit": "789992a",
+    "engine": "project helix/finance_lab/vendor/venture_costs.py",
+    "inputs": {
+      "business": "veterinary",
+      "area_sqft": 5941,
+      "monthly_rent": 3218,
+      "build_months": 3
+    },
+    "verification": "Ledger transcribed from the saved capture and cross-checked with the preserved deterministic calculation. Low/high totals match the saved Stage 3 range; base matches Finance Lab and the memorandum. No private saved JSON was available locally."
+  }
+}

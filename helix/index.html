@@ -49,6 +49,22 @@
 <div class="engine-slot" id="engine-slot" hidden>
 <iframe id="engine-player" title="Helix deterministic sorting engine — 8× looping demonstration; drag to orbit and scroll to zoom" data-src="https://projects.jessenth.com/Helix-Viz/embed.html" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
+<section id="finance-exhibit" class="finance-exhibit" hidden aria-label="Hardy Road financial decomposition">
+<div class="finance-heading">
+<div><span class="section-label">Starting capital</span><p class="finance-budget">$900,000</p></div>
+<div><p class="finance-case">Hardy Road · Veterinary clinic</p><div class="finance-scenarios" role="group" aria-label="Opening cost scenario">
+<button type="button" data-scenario="low" aria-pressed="false">Low</button><button type="button" data-scenario="base" aria-pressed="true">Base</button><button type="button" data-scenario="high" aria-pressed="false">High</button>
+</div></div>
+</div>
+<div class="allocation" id="allocation" role="img" aria-label="Base scenario capital allocation">
+<div class="allocation-opening" id="allocation-opening"></div><span class="allocation-reserve" id="allocation-reserve"></span><span class="allocation-headroom" id="allocation-headroom"></span>
+</div>
+<div class="allocation-key"><p><span>Opening costs</span><strong id="finance-opening">$406,940</strong></p><p><span>Reserve</span><strong id="finance-reserve">$50,000</strong></p><p><span>Headroom</span><strong id="finance-headroom">$443,060</strong></p></div>
+<div class="cost-heading"><span>Inside the opening cost</span><span>Inspect a component</span></div>
+<div id="finance-components" class="finance-components" role="group" aria-label="Opening cost components"></div>
+<p class="finance-basis" id="finance-basis"></p>
+<p class="sr-only" id="finance-update" role="status" aria-live="polite"></p>
+</section>
 <div class="decision-sheet" id="decision-sheet" hidden>
 <div class="decision-kicker"><span>Saved decision / Hardy Road</span><span>15 Nov 2026</span></div>
 <h3>Proceed to<br> diligence.</h3>
@@ -79,7 +95,7 @@
 </div>
 <div class="exhibition-footer">
 <p><span class="footer-label">The product</span><span>Listing → investigation → screening → finance</span></p>
-<details class="scope-note"><summary>About this study <span aria-hidden="true">＋</span></summary><div><b>First viewport only.</b> Engineering and Collaboration are separate experiences planned for the next phase. These are saved source images, source-linked annotations and a retypeset saved decision, not a running backend. The engine animation is pending. The selected artifacts all concern Hardy Road; no Broadway financial results are mixed into this view. <a href="../helix_old/">Open the previous case study.</a></div></details>
+<details class="scope-note"><summary>About this study <span aria-hidden="true">＋</span></summary><div><b>First viewport only.</b> Engineering and Collaboration are separate experiences planned for the next phase. These are saved source images, source-linked annotations, a financial decomposition and a retypeset saved decision, not a running backend. The engine animation is pending. The selected artifacts all concern Hardy Road; no Broadway financial results are mixed into this view. <a href="../helix_old/">Open the previous case study.</a></div></details>
 <span class="prototype-label">Composition study / local prototype</span>
 </div>
 </section>

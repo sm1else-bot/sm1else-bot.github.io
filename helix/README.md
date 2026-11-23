@@ -208,3 +208,37 @@ and source citations.
 The worksheet uses contain instead of cover so its numeric columns remain visible
 on narrow screens. Annotation geometry uses the same fit mode, keeping outlines
 and leader endpoints aligned with their evidence.
+
+
+## Financial decomposition — current Finance Lab presentation
+
+This revision supersedes the annotated Finance Lab screenshot presentation.
+Photographs reveal evidence through annotations; numeric relationships are
+visualized. Screenshots are linked as original application records.
+
+A proportional $900,000 allocation contains ten opening-cost segments, a fixed
+$50,000 reserve, and remaining headroom. Low/base/high controls update all values
+and widths. Component buttons identify their source or calculation basis.
+Keyboard focus also exposes that basis. Reduced-motion preferences remove width
+transitions; mobile uses natural document flow, with no nested scrolling.
+
+Verified totals: low $222,263, base $406,940, high $591,617.
+Corresponding headroom: $627,737, $443,060, $258,383.
+All ten component amounts sum exactly to the corresponding opening cost.
+
+The source ledger is preserved in assets/hardy-finance-data.json, with input
+and provenance details. The saved Finance Lab screenshot establishes the base
+case and visible components, and its scenario card records the Stage 3 low/high
+range. The original deterministic venture_costs calculation was run locally with
+those recorded inputs (veterinary, 5,941 SF, $3,218 monthly rent, three build months)
+to cross-check the component values and all totals. No provider call, new business
+assumption, or revenue forecast was introduced. Private saved JSON was not available.
+The existing build-out scaling limitation is retained.
+
+Decision is explicitly labeled the saved base-case memorandum. Changing the
+Finance Lab scenario does not rewrite that historical decision.
+
+The engine implementation from commit 5bbbeb6 was retained unchanged: iframe,
+source URL, exhibit caption, load/unload behavior and all engine CSS rules.
+Verification covered all six exhibit stages, six viewport widths, keyboard controls,
+reduced motion, each scenario's monetary invariants and proportional chart widths.
